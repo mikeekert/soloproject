@@ -1,6 +1,70 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
+    <div class="dataAreaCurrent">
+        <section class="section_8bit">
+            <div class="wrapper">
+                <div class="imgContainer">
+                    <img src="../../image/Super_Mario_64_box_cover.jpg">
+                </div>
+                <div class="gameDescCont">
+                    <span class="nowPlaying">NOW PLAYING:</span>
+                    <span class="gameDesc nowPlaying">Super Mario 64</span>
+                    <span class="gameDesc ">
+                        <img src=https://upload.wikimedia.org/wikipedia/en/0/04/Nintendo_64_Logo.svg class="platform">
+                    </span>
 
-    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+                    <span class="gameDesc">HOURS PLAYED: 3</span>
+                    <span class="gameDesc">ESTIMATED HOURS TO COMPLETE: 11</span>
+
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                        <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="dataArea">
+        <section class="section_8bit">
+            <div class="wrapper old">
+                <div class="imgContainerOld">
+
+                    <img src="../../image/Super_Mario_64_box_cover.jpg" class="imgBW">
+                </div>
+                <div class="gameDescCont">
+                    <span class="gameDesc">Super Mario 64</span>
+                    <span class="gameDesc">RELEASE DATE: 1995</span>
+                    <span class="gameDesc">In Progress</span>
+                    
+                </div>
+                <div class="progress">
+                    <div class="progress-bar oldBar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                        <span class="sr-only">40% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="dataArea">
+        <section class="section_8bit">
+            <div class="wrapper old">
+                <div class="imgContainerOld">
+
+                    <img src="../../image/Super_Mario_64_box_cover.jpg" class="imgComplete">
+                </div>
+                <div class="gameDescCont">
+                    <span class="gameDesc">Super Mario 64</span>
+                    <span class="gameDesc nowPlaying complete">COMPLETE!</span>
+
+                </div>
+                <div class="progress">
+                    <div class="progress-bar fullBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        <span class="sr-only">100% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
