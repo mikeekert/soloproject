@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
   console.log('get /user route');

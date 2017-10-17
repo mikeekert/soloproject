@@ -1,14 +1,11 @@
 @font-face {
-  font-family: 'press_start_kregular';
-  src: url('../fonts/prstartk-webfont.eot');
-  src: url('../fonts/prstartk-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/prstartk-webfont.woff2') format('woff2'),
-       url('../fonts/prstartk-webfont.woff') format('woff'),
-       url('../fonts/prstartk-webfont.ttf') format('truetype'),
-       url('../fonts/prstartk-webfont.svg#press_start_kregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'press_start_kregular';
+    src: url('../fonts/prstartk-webfont.eot');
+    src: url('../fonts/prstartk-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/prstartk-webfont.woff2') format('woff2'), url('../fonts/prstartk-webfont.woff') format('woff'), url('../fonts/prstartk-webfont.ttf') format('truetype'), url('../fonts/prstartk-webfont.svg#press_start_kregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
+
 
 /* 
 #00171F  Rich Black
@@ -17,268 +14,316 @@
 #00A8E8 Vivid Cerulean
 */
 
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
-  background-color:#00A8E8;
+body,
+html {
+    background-color: #00A8E8;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
 }
 
-.instructions .container h1 {
-  font-size: 55px;
-  font-weight: 600;
-  text-align: center;
-  color: #fff;
+.btn-danger {
+    margin-left: 10px;
 }
 
-.instructions {
-  background-color: #004257 ;
-  color: #DDDDDD;
-  padding: 15px;
-  border-bottom: white;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-}
-
-#entryForm {
-  margin-top: 14px;
+.completeBox {
+    -ms-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    height: 180px;
+    left: 1%;
+    position: absolute;
+    top: -40%;
+    transform: scale(0.7);
+    width: 315px;
 }
 
 #container {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
-.container p{
-  margin-top : 14px;
+.container {
+    margin: 0 auto;
+    width:90%;
 }
 
-.message {
-  padding: 10px 0;
-}
-
-.message p {
-  margin-left: 10px;
-}
-
-.message:nth-child(odd) {
-   background-color: #eeeeee;
-}
-
-.message:nth-child(even) {
-  background-color: #f8f8f8;
-}
-
-.btn-danger{
-  margin-left: 10px;
-}
-
-.navbar {
-  width: 100%;
-  border-radius: 0px;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  text-decoration: underline;
-  color: #eee;
-}
-
-.lead {
-  font-family: "press_start_kregular", serif;
-  margin: 25px;
-  text-shadow: 7px 5px rgba(0, 0, 0, .6);
-}
-
-.container { 
-  margin: 0 auto;
-}
-
-.login {
-width: 20%;
-margin: 200px auto;
-}
-
-.logout {
-  cursor: pointer;
-}
-
-#welcome {
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.14);
-  text-align: right;
-  width: 90%;
-  margin: 25px auto;
-}
-
-.headNav{
-  height: 50px;
-  line-height: 0;
-}
-
-.dataAreaCurrent {
-  height: 300px;
-  width: 90%;
-  margin: 0 auto;
+.container p {
+    margin-top: 14px;
 }
 
 .dataArea {
-  height: 200px;
-  width: 90%;
-  margin: 0 auto; 
+    height: 200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.dataAreaCurrent {
+    height: 300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#entryForm {
+    margin-top: 14px;
 }
 
 .gameDesc {
-margin: 0 25px;
+    margin: 0 25px;
 }
 
 .gameDescCont {
-  display: flex;
-  flex-direction: column;
-  flex: 2;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.headNav {
+    height: 50px;
+    line-height: 0;
 }
 
 .imgBW {
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-  max-width: 100%;
-  height: 100%;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    height: 100%;
+    max-width: 100%;
 }
 
 .imgComplete {
-  max-width: 100%;
-  height: 100%;
-}
-
-.platform {
-  height: 45px;
+    height: 100%;
+    max-width: 100%;
 }
 
 .imgContainerOld {
-  height: 75px;
+    height: 100px;
 }
 
-
-
-.nowPlaying.complete {
-  margin-top: 15px;
+.instructions {
+    background-color: #004257;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom: white;
+    color: #DDDDDD;
+    padding: 15px;
 }
 
-.old {
-  height: 75px;
+.instructions .container h1 {
+    color: #fff;
+    font-size: 55px;
+    font-weight: 600;
+    text-align: center;
 }
 
-.progress-bar.oldBar {
-  background-color: rgba(183, 94, 51, 0.85);
+.lead {
+    font-family: "press_start_kregular", serif;
+    margin: 25px;
+    text-shadow: 7px 5px rgba(0, 0, 0, .6);
 }
 
-.progress-bar.fullBar {
-  background-color: rgba(51, 183, 67, 0.85);
+li {
+    float: left;
+}
+
+li a {
+    color: white;
+    display: block;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: #eee;
+    text-decoration: underline;
+}
+
+.login {
+    margin: 200px auto;
+    width: 20%;
+}
+
+.logout {
+    cursor: pointer;
+}
+
+.message {
+    padding: 10px 0;
+}
+
+.message:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+.message:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.message p {
+    margin-left: 10px;
+}
+
+.navbar {
+    border-radius: 0px;
+    width: 100%;
 }
 
 .nowPlaying {
-  font-size: 30px;
-  font-family: "press_start_kregular", serif;
-  margin: 0 25px 10px;
-  text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
+    font-family: "press_start_kregular", serif;
+    font-size: 30px;
+    margin: 0 25px 10px;
+    text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 }
 
-.section_8bit{ 
-  width: 100%; 
-  float: left; 
-  border-left: 10px solid #fff;
-  border-right: 10px solid #fff;
-  position: relative; 
-  -webkit-box-sizing: border-box; 
-  -moz-box-sizing: border-box; 
-  box-sizing: border-box;
-  background-color: black
-  }
-  
-  .section_8bit .wrapper{ 
-  display: block;
-  color: #fff;
-  padding: 40px; 
-  margin: -10px 0; 
-  border-top: 10px solid #fff; 
-  border-bottom: 10px solid #fff; 
-  display: flex;
-  justify-content: space-between;
-  }
-  
-  .section_8bit::before, 
-  .section_8bit::after,
-  .section_8bit .wrapper::before, 
-  .section_8bit .wrapper::after{ 
-  content: ''; 
-  width: 10px; 
-  height: 10px; 
-  display: block; 
-  position: absolute;   
-  background: rgb(255, 255, 255); 
-  }
-  .section_8bit::before{ top: -5px; left: -5px; }
-  .section_8bit::after{ top: -5px; right: -5px; }
-  .section_8bit .wrapper::before{ bottom: -5px; left: -5px; }
-  .section_8bit .wrapper::after{ bottom: -5px; right: -5px; }
+.nowPlaying.complete {
+    margin-top: 15px;
+}
 
+.section_8bit.completeArea {
+    margin-top: 35px;
+}
 
-  .progress {
+.platform {
+    height: 45px;
+}
+
+.progress {
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    background-color: rgb(38, 37, 36);
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     height: 60px;
     margin-bottom: 20px;
     overflow: hidden;
-    background-color: rgb(38, 37, 36);
-        border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
     width: 40%;
 }
 
 .progress-bar {
-  float: left;
-  width: 0;
-  height: 100%;
-  font-size: 12px;
-  line-height: 20px;
-  color: #fff;
-  background-color: #337ab7;
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-  -webkit-transition: width .6s ease;
-  -o-transition: width .6s ease;
-  transition: width .6s ease;
+    -o-transition: width .6s ease;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    -webkit-transition: width .6s ease;
+    background-color: #337ab7;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    height: 100%;
+    line-height: 20px;
+    transition: width .6s ease;
+    width: 0;
 }
 
+.progress-bar.fullBar {
+    background-color: rgba(51, 183, 67, 0.85);
+}
+
+.progress-bar.oldBar {
+    background-color: rgba(236, 230, 141, 0.85);
+}
+
+.section_8bit {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-color: black;
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+    box-sizing: border-box;
+    float: left;
+    margin: 25px 0;
+    position: relative;
+    width: 100%;
+}
+
+.section_8bit::after {
+    right: -5px;
+    top: -5px;
+}
+
+.section_8bit::before {
+    left: -5px;
+    top: -5px;
+}
+
+.section_8bit::before,
+.section_8bit::after,
+.section_8bit .wrapper::before,
+.section_8bit .wrapper::after {
+    background: rgb(255, 255, 255);
+    content: '';
+    display: block;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+}
+
+.section_8bit .wrapper {
+    border-bottom: 10px solid #fff;
+    border-top: 10px solid #fff;
+    color: #fff;
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    margin: -10px 0;
+    padding: 40px;
+}
+
+.section_8bit .wrapper::after {
+    bottom: -5px;
+    right: -5px;
+}
+
+.section_8bit .wrapper::before {
+    bottom: -5px;
+    left: -5px;
+}
+
+.section_8bit.headMenu {
+  width: 20%;
+  
+}
+
+
 .sr-only {
-  line-height: 65px;
-  width: 1px;
-  height: 1px;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    font-family: "press_start_kregular", serif;
+    font-size: 25px;
+    height: 1px;
+    line-height: 65px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0 25px;
+    text-shadow: 2px 2px #000000;
+    white-space: nowrap;
+    width: 1px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+#welcome {
+    margin: 25px auto;
+    text-align: right;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.14);
+    width: 25%;
+    float: right;
+}
+
+.wrapper.wrapMenu {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.wrapper.wrapMenu.nowPlaying {
+  font-size: 20px;
+}
+.wrapper.wrapMenu.nowPlaying > li > a {
+  width: 225px;
+  margin: 10px auto;
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-  font-family: "press_start_kregular", serif;
-  font-size: 25px;  
-  text-shadow: 2px 2px #000000;
-  white-space: nowrap;
-  padding: 0 25px;
 }

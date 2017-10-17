@@ -1,7 +1,7 @@
 myApp.factory('UserService', function($http, $location){
   console.log('UserService Loaded');
 
-  var userObject = {};
+  var userObject = [{}];
 
   return {
     userObject : userObject,
@@ -29,6 +29,14 @@ myApp.factory('UserService', function($http, $location){
       $http.get('/user/logout').then(function(response) {
         console.log('UserService -- logout -- logged out');
         $location.path("/home");
+      });
+    },
+
+    getgames : function() {
+      $http.get('/games/').then(function(response) {
+        userObject.games = response.data;
+        console.log('UserService -- games -- getting games');
+        console.log('userObject -- GET /games/ -- Response:', userObject.games);
       });
     }
   };
