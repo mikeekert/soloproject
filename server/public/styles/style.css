@@ -44,7 +44,7 @@ html {
 
 .container {
     margin: 0 auto;
-    width:90%;
+    width: 90%;
 }
 
 .container p {
@@ -277,10 +277,10 @@ li a:hover {
 }
 
 .section_8bit.headMenu {
-  width: 20%;
-  
+    width: 20%;
+    position: absolute;
+    top: -5px;
 }
-
 
 .sr-only {
     border: 0;
@@ -308,22 +308,40 @@ ul {
     margin: 25px auto;
     text-align: right;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.14);
-    width: 25%;
     float: right;
 }
 
 .wrapper.wrapMenu {
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .wrapper.wrapMenu.nowPlaying {
-  font-size: 20px;
+    font-size: 20px;
 }
-.wrapper.wrapMenu.nowPlaying > li > a {
-  width: 225px;
-  margin: 10px auto;
-  padding: 0;
+
+.wrapper.wrapMenu.nowPlaying>li>a {
+    width: 225px;
+    margin: 0px auto;
+    padding: 10px 0;
+}
+
+.arrowLink::before {
+content: '>';
+height: 0px;
+position: relative;
+width: 0;
+display: none;
+top: 0px;
+left: -30px;
+}
+
+.arrowLink:hover:before {
+    display:block;
+}
+
+.arrowLink:hover {
+    text-decoration: none;
 }
