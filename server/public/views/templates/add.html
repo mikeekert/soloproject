@@ -20,16 +20,15 @@
       </div>
     </section>
   </div>
-  <div class="flexResults">
-  <div class="centerThis form" ng-repeat="result in ac.userObject.results">
-    <section class="section_8bit addForm resultsBlock">
-      <div class="wrapper wrapMenu nowPlaying resultswrap">
-          <div class="imgResultContainer">
-            <img ng-src="{{ result.image }}" class="resultImg">
-          </div>
-          <span class="gameResult">{{ result.name }}</span>
-      </div>
-    </section>
+  <div class="flexResult">
+    <div class="results" ng-repeat="result in ac.userObject.results">
+      <section class="section_8bit addForm resultsBlock">
+        <div class="wrapper wrapMenu nowPlaying resultswrap">
+          <span class="resultText">{{ result.name }}</span>
+          <span class="resultImg"><img ng-src="{{ result.image }}"</span>
+        </div>
+      </section>
+    </div>
+
   </div>
-</div>
 </div>

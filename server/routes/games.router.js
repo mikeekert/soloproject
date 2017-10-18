@@ -69,7 +69,7 @@ router.post('/api/:id', function (req, res) {
                     }, 'cover_small_2x', 'jpg');
                 }
             }
-            response.body.splice(3, response.body.length);
+            response.body.splice(5, response.body.length);
             // console.log(response.body);
             res.send(response.body);
         }).catch(error => {
