@@ -94,6 +94,10 @@ html {
     max-width: 100%;
 }
 
+.imgResultContainer {
+    margin: 0 auto;
+}
+
 .imgContainerOld {
     height: 100px;
 }
@@ -277,9 +281,71 @@ li a:hover {
 }
 
 .section_8bit.headMenu {
-    width: 20%;
+    width: 350px;
     position: absolute;
     top: -5px;
+}
+
+.section_8bit.addFormTitle {
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.resultsBlock {
+    width: 25%;
+}
+
+.gameResult {
+    margin: 0;
+    text-align: center;
+}
+
+.centerThis {
+    width: 500px;
+    margin: 90px auto;
+}
+
+.search {
+    font-family: "press_start_kregular", serif;
+    font-size: 30px;
+    margin: 0 25px 10px;
+    text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
+    background-color: black;
+    border: 3px white;
+    border-style: solid;
+    padding: 10px;
+    color: white;
+    text-indent: 5px;
+}
+
+.search:focus {
+    outline-color: transparent;
+    outline-style: none;
+  }
+
+.end {
+    color: #fff;
+    background-color: black;
+    font-size: 30px;
+    font-family: "press_start_kregular", serif;
+    border:0;
+    margin: 0;
+    padding: 10px;
+    line-height: 40px;
+    height: 60px;
+    width: 125px;
+    cursor: pointer;
+}
+
+.end:focus {
+    outline-color: transparent;
+    outline-style: none; 
+}
+
+.centerThis.form {
+    width: 1500px;
+    margin: 90px auto;
 }
 
 .sr-only {
@@ -328,18 +394,22 @@ ul {
     padding: 10px 0;
 }
 
+.wrapper.wrapMenu.nowPlaying.resultswrap {
+    min-height: 255px;
+}
+
 .arrowLink::before {
-content: '>';
-height: 0px;
-position: relative;
-width: 0;
-display: none;
-top: 0px;
-left: -30px;
+    content: '>';
+    height: 0px;
+    position: relative;
+    width: 0;
+    display: none;
+    top: 0px;
+    left: -30px;
 }
 
 .arrowLink:hover:before {
-    display:block;
+    display: block;
 }
 
 .arrowLink:hover {

@@ -1,0 +1,35 @@
+<div ng-include="'views/partials/nav.html'" ng-controller="UserController as uc"></div>
+<div class="container">
+  <div class="centerThis">
+    <section class="section_8bit addFormTitle">
+      <div class="wrapper wrapMenu nowPlaying">
+        <p class="nowPlaying">
+          Add Game:
+        </p>
+      </div>
+    </section>
+  </div>
+  <div class="centerThis form">
+    <section class="section_8bit addForm">
+      <div class="wrapper wrapMenu nowPlaying">
+        <p class="nowPlaying">
+          Text Here:
+          <input type="text" class="search" ng-model="ac.searchIn">
+          <button class="end arrowLink" ng-click="ac.userService.apiSearch(ac.searchIn)">END</button>
+        </p>
+      </div>
+    </section>
+  </div>
+  <div class="flexResults">
+  <div class="centerThis form" ng-repeat="result in ac.userObject.results">
+    <section class="section_8bit addForm resultsBlock">
+      <div class="wrapper wrapMenu nowPlaying resultswrap">
+          <div class="imgResultContainer">
+            <img ng-src="{{ result.image }}" class="resultImg">
+          </div>
+          <span class="gameResult">{{ result.name }}</span>
+      </div>
+    </section>
+  </div>
+</div>
+</div>

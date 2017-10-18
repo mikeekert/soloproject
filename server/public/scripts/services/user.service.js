@@ -38,6 +38,15 @@ myApp.factory('UserService', function($http, $location){
         console.log('UserService -- games -- getting games');
         console.log('userObject -- GET /games/ -- Response:', userObject.games);
       });
+    },
+
+    apiSearch : function(name) {
+      $http.post('/games/api/'+name).then(function(response) {
+        console.log('UserService -- API call:', response);
+        userObject.results = response.data;
+      });
     }
+    
+    
   };
 });
