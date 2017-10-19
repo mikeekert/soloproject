@@ -2,6 +2,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     console.log('LoginController created');
     var vm = this;
 
+    vm.userService = UserService;
+    vm.userObject = UserService.userObject;
   
 
     vm.user = {
@@ -20,6 +22,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
           if(response.data.username) {
             console.log('LoginController -- login -- success: ', response.data);
             // location works with SPA (ng-route)
+            vm.userObject.games = [];
+            vm.userObject.results = [];           
             $location.path('/user'); // http://localhost:5000/#/user
           } else {
             console.log('LoginController -- login -- failure: ', response);

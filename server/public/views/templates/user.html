@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
+<div class="container" ng-cloak>
 
     <div class="dataAreaCurrent" ng-repeat='current in uc.userObject.games | filter : {nowplaying:true}'>
         <section class="section_8bit">

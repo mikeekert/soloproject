@@ -13,7 +13,7 @@
     <section class="section_8bit addForm">
       <div class="wrapper wrapMenu nowPlaying">
         <p class="nowPlaying">
-          Text Here:
+          <span class="searchLabel">Search:</span>
           <input type="text" class="search" ng-model="ac.searchIn">
           <button class="end arrowLink" ng-click="ac.userService.apiSearch(ac.searchIn)">END</button>
         </p>
@@ -31,7 +31,7 @@
           <span class="resultText date">( {{ result.release_dates[0].human }} )</span>
           
           <span class="resultImg">
-            <img ng-src="{{ result.image }}">
+            <img ng-src="{{ result.image }}" class="resultImgSrc">
           </span>
           <!-- <div class="arrowholder"> -->
             <span class="resultText up" ng-show="open">^</span>

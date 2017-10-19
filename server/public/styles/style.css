@@ -47,7 +47,7 @@ html {
 
 .centerThis {
     width: 500px;
-    margin: 0px auto;
+    margin: 65px auto;
 }
 
 .centerThis.form {
@@ -73,6 +73,8 @@ html {
 
 .container p {
     margin-top: 14px;
+    align-items: center;
+    justify-content: center;
 }
 
 #container {
@@ -101,7 +103,7 @@ html {
     padding: 10px;
     line-height: 40px;
     height: 60px;
-    width: 125px;
+    width: 200px;
     cursor: pointer;
     text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 }
@@ -137,7 +139,6 @@ html {
 
 .headNav {
     height: 50px;
-    line-height: 0;
 }
 
 .imgBW {
@@ -162,14 +163,17 @@ html {
     border-bottom-width: 2px;
     border-bottom: white;
     color: #eee;
-    padding: 15px;
+    padding: 0;
 }
 
 .instructions .container h1 {
     color: #fff;
     font-size: 55px;
     font-weight: 600;
+    margin: 0 auto;
     text-align: center;
+    padding: 10px 375px;
+    width: 50%;
 }
 
 .lead {
@@ -221,7 +225,7 @@ li a:hover {
 }
 
 .name {
-    min-height: 115px;
+    min-height: 165px;
 }
 
 .name p {
@@ -238,6 +242,7 @@ li a:hover {
     font-size: 30px;
     margin: 0 25px 10px;
     text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
+    display: flex;
 }
 
 .nowPlaying.complete {
@@ -285,6 +290,12 @@ li a:hover {
 .resultImg {
     margin: 20px auto 0;
     flex: 1;
+    width: 100%;
+    max-width: 150px;
+}
+
+.resultImgSrc {
+        width: 100%
 }
 
 .resultText {
@@ -299,7 +310,7 @@ li a:hover {
 .date {
     font-size: 10px;
     padding-top: 15px;
-    margin: 0 40px;
+    margin: 0 20px;
     border-top: 3px white solid;
 }
 
@@ -331,11 +342,17 @@ li a:hover {
     padding: 10px;
     color: white;
     text-indent: 5px;
+    flex-basis: 56%;
+    min-width: 0;
 }
 
 .search:focus {
     outline-color: transparent;
     outline-style: none;
+}
+
+.searchLabel {
+    width: 200px;
 }
 
 .section_8bit {
@@ -487,7 +504,7 @@ ul {
 }
 
 .wrapper.wrapMenu.nowPlaying.resultswrap {
-    min-height: 500px;
+    min-height: 525px;
 }
 
 .wrapper.wrapMenu.nowPlaying>li>a {
