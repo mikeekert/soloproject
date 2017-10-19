@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav.html'" ng-controller="UserController as uc"></div>
-<div class="container">
+<div class="container" ng-init="ac.clamp()">
   <div class="centerThis">
     <section class="section_8bit addFormTitle">
       <div class="wrapper wrapMenu nowPlaying">
@@ -21,11 +21,22 @@
     </section>
   </div>
   <div class="flexResult">
-    <div class="results" ng-repeat="result in ac.userObject.results">
+    <div class="results" ng-repeat="result in ac.userObject.results" ng-mouseover="open = true" ng-mouseleave="open = false">
       <section class="section_8bit addForm resultsBlock">
         <div class="wrapper wrapMenu nowPlaying resultswrap">
-          <span class="resultText">{{ result.name }}</span>
-          <span class="resultImg"><img ng-src="{{ result.image }}"</span>
+          <span class="resultText name"> 
+            <p>{{ result.name }}
+              </p>
+            </span>
+          <span class="resultText date">( {{ result.release_dates[0].human }} )</span>
+          
+          <span class="resultImg">
+            <img ng-src="{{ result.image }}">
+          </span>
+          <!-- <div class="arrowholder"> -->
+            <span class="resultText up" ng-show="open">^</span>
+          <!-- </div> -->
+
         </div>
       </section>
     </div>

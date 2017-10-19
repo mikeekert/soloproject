@@ -93,7 +93,7 @@ html {
 
 .end {
     color: #fff;
-    background-color: black;
+    background-color: rgb(38, 37, 36);
     font-size: 30px;
     font-family: "press_start_kregular", serif;
     border: 0;
@@ -103,6 +103,7 @@ html {
     height: 60px;
     width: 125px;
     cursor: pointer;
+    text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 }
 
 .end:focus {
@@ -114,11 +115,11 @@ html {
     margin-top: 14px;
 }
 
-
 .flexResult {
     width: 100%;
     display: flex;
 }
+
 .gameDesc {
     margin: 0 25px;
 }
@@ -155,13 +156,12 @@ html {
     height: 100px;
 }
 
-
 .instructions {
     background-color: #004257;
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom: white;
-    color: #DDDDDD;
+    color: #eee;
     padding: 15px;
 }
 
@@ -220,6 +220,14 @@ li a:hover {
     margin-left: 10px;
 }
 
+.name {
+    min-height: 115px;
+}
+
+.name p {
+    margin: 0;
+}
+
 .navbar {
     border-radius: 0px;
     width: 100%;
@@ -242,7 +250,7 @@ li a:hover {
 
 .progress {
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
-    background-color: rgb(38, 37, 36);
+    background-color: rgba(213, 213, 213, 0.55);
     border-radius: 4px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
     height: 60px;
@@ -275,21 +283,41 @@ li a:hover {
 }
 
 .resultImg {
-    max-height: 255px;
-    margin: 0 auto;
+    margin: 20px auto 0;
+    flex: 1;
 }
 
 .resultText {
     text-align: center;
+    flex: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.date {
+    font-size: 10px;
+    padding-top: 15px;
+    margin: 0 40px;
+    border-top: 3px white solid;
 }
 
 .resultsBlock {
     width: 25%;
 }
 
+.resultsBlock:hover {
+    background-color: rgba(38, 37, 36, 0.72);
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
 .results {
     flex-grow: 1;
     width: 20%;
+    cursor: pointer;
 }
 
 .search {
@@ -297,7 +325,7 @@ li a:hover {
     font-size: 30px;
     margin: 0 25px 10px;
     text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
-    background-color: black;
+    background-color: rgb(38, 37, 36);
     border: 3px white;
     border-style: solid;
     padding: 10px;
@@ -313,7 +341,7 @@ li a:hover {
 .section_8bit {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    background-color: black;
+    background-color: rgb(38, 37, 36);
     border-left: 10px solid #fff;
     border-right: 10px solid #fff;
     box-sizing: border-box;
@@ -409,6 +437,37 @@ ul {
     padding: 0;
 }
 
+.up {
+    -webkit-animation: uparrow 0.6s infinite alternate ease-in-out;
+    animation: uparrow 0.6s infinite alternate ease-in-out;
+    font-size: 45px;
+    /* display:none; */
+}
+
+@-webkit-keyframes uparrow {
+    0% {
+        -webkit-transform: translateY(0.6em);
+        opacity: 0.8
+    }
+    100% {
+        -webkit-transform: translateY(0.3em);
+        opacity: 0.9
+    }
+}
+
+@keyframes uparrow {
+    0% {
+        -webkit-transform: translateY(0.6em);
+        opacity: 0.8
+    }
+    100% {
+        -webkit-transform: translateY(0.3em);
+        opacity: 0.9
+    }
+}
+
+  
+
 #welcome {
     margin: 25px auto;
     text-align: right;
@@ -428,11 +487,22 @@ ul {
 }
 
 .wrapper.wrapMenu.nowPlaying.resultswrap {
-    min-height: 320px;
+    min-height: 500px;
 }
 
 .wrapper.wrapMenu.nowPlaying>li>a {
     width: 225px;
     margin: 0px auto;
     padding: 10px 0;
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+    visibility: hidden!important;
+    display: block!important;
 }
