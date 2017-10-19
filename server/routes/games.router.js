@@ -50,7 +50,7 @@ router.post('/api/:id', function (req, res) {
             search: req.params.id,
             // order: 'popularity:desc',
             fields: '*', // Return all fields
-            limit: 10, // Limit to 5 results
+            limit: 20, // Limit to 5 results
             offset: 0, // Index offset for results
 
         }).then(response => {
@@ -62,7 +62,13 @@ router.post('/api/:id', function (req, res) {
                 if ( response.body[j].hasOwnProperty('cover') === false ) {
                     console.log(response.body[j].name, ' has no image');
                     response.body.splice(j,1);
-                } else {
+                } else if ( response.body[j].name.includes('Collector') ) {
+                    console.log('***', response.body[j].name, '*** removed!');
+                    response.body.splice(j,1);
+                } else if ( response.body[j].name.includes('Edition') ) {
+                    console.log('***', response.body[j].name, '*** removed!');                    
+                    response.body.splice(j,1);
+                 } else {
                     console.log('setting up image for:', response.body[j].name);
                     response.body[j].image = client.image({
                         cloudinary_id: response.body[j].cover.cloudinary_id

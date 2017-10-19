@@ -45,8 +45,10 @@ myApp.factory('UserService', function($http, $location){
         console.log('UserService -- API call:', response);
         userObject.results = response.data;
       });
+    },
+
+    selectGame : function(target) {
+      userObject.selectedGame = target;
     }
-    
-    
   };
 });

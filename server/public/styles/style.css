@@ -1,7 +1,11 @@
 @font-face {
     font-family: 'press_start_kregular';
     src: url('../fonts/prstartk-webfont.eot');
-    src: url('../fonts/prstartk-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/prstartk-webfont.woff2') format('woff2'), url('../fonts/prstartk-webfont.woff') format('woff'), url('../fonts/prstartk-webfont.ttf') format('truetype'), url('../fonts/prstartk-webfont.svg#press_start_kregular') format('svg');
+    src: url('../fonts/prstartk-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/prstartk-webfont.woff2') format('woff2'),
+    url('../fonts/prstartk-webfont.woff') format('woff'),
+    url('../fonts/prstartk-webfont.ttf') format('truetype'),
+    url('../fonts/prstartk-webfont.svg#press_start_kregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -47,7 +51,7 @@ html {
 
 .centerThis {
     width: 500px;
-    margin: 65px auto;
+    margin: 35px auto;
 }
 
 .centerThis.form {
@@ -89,7 +93,7 @@ html {
 
 .dataAreaCurrent {
     height: 300px;
-    margin: 0 auto;
+    margin: 25px auto 0;
     width: 100%;
 }
 
@@ -138,7 +142,7 @@ html {
 }
 
 .headNav {
-    height: 50px;
+    height: 75px;
 }
 
 .imgBW {
@@ -295,7 +299,7 @@ li a:hover {
 }
 
 .resultImgSrc {
-        width: 100%
+    width: 100%
 }
 
 .resultText {
@@ -482,8 +486,6 @@ ul {
         opacity: 0.9
     }
 }
-
-  
 
 #welcome {
     margin: 25px auto;

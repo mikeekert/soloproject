@@ -21,7 +21,7 @@
     </section>
   </div>
   <div class="flexResult">
-    <div class="results" ng-repeat="result in ac.userObject.results" ng-mouseover="open = true" ng-mouseleave="open = false">
+    <div class="results" ng-repeat="result in ac.userObject.results track by $index" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="ac.selectGame(result)">
       <section class="section_8bit addForm resultsBlock">
         <div class="wrapper wrapMenu nowPlaying resultswrap">
           <span class="resultText name"> 
