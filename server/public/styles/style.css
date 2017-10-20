@@ -6,14 +6,6 @@
     font-style: normal;
 }
 
-
-/* 
-#00171F  Rich Black
-#003459 PRussian Blue
-#007EA7 Cerulean
-#00A8E8 Vivid Cerulean
-*/
-
 .arrowLink::before {
     content: '>';
     height: 0px;
@@ -206,6 +198,15 @@ a:hover {
     width: 90%;
 }
 
+.lead.alert.alert-danger {
+    position: fixed;
+    z-index: 9999;
+    font-size: 29px;
+    top: 260px;
+    left: 0;
+    width: 25%;
+}
+
 .gifContainer {
     display: flex;
     justify-content: center;
@@ -309,6 +310,7 @@ a:hover {
     text-align: center;
     width: 100%;
 }
+
 .pressStartHome {
     color: #fff;
     font-size: 30px;
@@ -432,7 +434,8 @@ a:hover {
     color: #fff;
     font-family: "press_start_kregular", serif;
     font-size: 30px;
-    text-shadow:7px 5px rgba(0, 0, 0, .6);;    
+    text-shadow: 7px 5px rgba(0, 0, 0, .6);
+    ;
 }
 
 .reg {
@@ -443,8 +446,8 @@ a:hover {
     margin: 50px auto 0;
     width: 500px;
 }
-.letters{
 
+.letters {
     font-size: 50px;
     padding: 8px;
     cursor: pointer;
@@ -452,7 +455,7 @@ a:hover {
 }
 
 .back {
-    margin: 0 15px;
+    margin: -55px 15px;
     text-align: left;
 }
 
@@ -463,6 +466,7 @@ a:hover {
 .letters:hover {
     border: 5px solid white;
 }
+
 .loginForm {
     margin: 0 auto;
     position: relative;
@@ -660,23 +664,24 @@ ul {
     -ms-animation: 1s blink step-end infinite;
     -o-animation: 1s blink step-end infinite;
     animation: 1s blink step-end infinite;
-  }
-  
-  @keyframes blink {
-    from, to {
-      color: transparent;
+}
+
+@keyframes blink {
+    from,
+    to {
+        color: transparent;
     }
     50% {
-      color: black;
+        color: black;
     }
-  }
-  
-  @-moz-keyframes blink {
-    from, to {
-      color: transparent;
+}
+
+@-moz-keyframes blink {
+    from,
+    to {
+        color: transparent;
     }
     50% {
-      color: black;
+        color: black;
     }
-  }
-  
+}
