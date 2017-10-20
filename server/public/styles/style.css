@@ -1,11 +1,7 @@
 @font-face {
     font-family: 'press_start_kregular';
     src: url('../fonts/prstartk-webfont.eot');
-    src: url('../fonts/prstartk-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/prstartk-webfont.woff2') format('woff2'),
-    url('../fonts/prstartk-webfont.woff') format('woff'),
-    url('../fonts/prstartk-webfont.ttf') format('truetype'),
-    url('../fonts/prstartk-webfont.svg#press_start_kregular') format('svg');
+    src: url('../fonts/prstartk-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/prstartk-webfont.woff2') format('woff2'), url('../fonts/prstartk-webfont.woff') format('woff'), url('../fonts/prstartk-webfont.ttf') format('truetype'), url('../fonts/prstartk-webfont.svg#press_start_kregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -184,6 +180,8 @@ html {
     font-family: "press_start_kregular", serif;
     margin: 25px;
     text-shadow: 7px 5px rgba(0, 0, 0, .6);
+    color: #fff;
+    text-align: center;
 }
 
 li {
@@ -204,8 +202,18 @@ li a:hover {
 }
 
 .login {
-    margin: 200px auto;
-    width: 20%;
+    margin: 0px auto 0;
+    width: 90%;
+}
+
+.gifContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    transform: scale(.65);
+    margin: 0 auto -67px;
+    width: 75%;
+    z-index: -1;
 }
 
 .logout {
@@ -291,6 +299,32 @@ li a:hover {
     background-color: rgba(51, 183, 67, 0.85);
 }
 
+.pressStart {
+    color: #fff;
+    font-size: 30px;
+    font-family: "press_start_kregular", serif;
+    margin: 200px auto;
+    text-shadow: 7px 5px rgba(0, 0, 0, .6);
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+.pressStartHome {
+    color: #fff;
+    font-size: 30px;
+    font-family: "press_start_kregular", serif;
+    margin: 0px auto;
+    text-shadow: 7px 5px rgba(0, 0, 0, .6);
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    text-decoration: none
+}
+
+.startClick {
+    cursor: pointer;
+}
+
 .resultImg {
     margin: 20px auto 0;
     flex: 1;
@@ -299,7 +333,8 @@ li a:hover {
 }
 
 .resultImgSrc {
-    width: 100%
+    width: 100%;
+    max-height: 235px;
 }
 
 .resultText {
@@ -318,6 +353,10 @@ li a:hover {
     border-top: 3px white solid;
 }
 
+.fadeSearch {
+    opacity: .5;
+}
+
 .resultsBlock {
     width: 25%;
 }
@@ -327,6 +366,7 @@ li a:hover {
     -webkit-transition: background-color 200ms linear;
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear;
+    /* opacity: .5; */
 }
 
 .results {
@@ -351,6 +391,82 @@ li a:hover {
 }
 
 .search:focus {
+    outline-color: transparent;
+    outline-style: none;
+}
+
+.searchHome {
+    font-family: "press_start_kregular", serif;
+    font-size: 30px;
+    text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
+    background-color: rgb(38, 37, 36);
+    border: 3px white;
+    border-style: solid;
+    padding: 10px 0;
+    color: white;
+    text-indent: 5px;
+    flex-basis: 56%;
+    min-width: 0;
+    width: 101%;
+    margin: 10px 0;
+}
+
+.imgHome {
+    width: 75px;
+}
+
+.homeFooter {
+    width: 100%;
+}
+
+.loginFormHome {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.regAlpha {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 545px;
+    color: #fff;
+    font-family: "press_start_kregular", serif;
+    font-size: 30px;
+    text-shadow:7px 5px rgba(0, 0, 0, .6);;    
+}
+
+.reg {
+    background-color: #00a8e8
+}
+
+.regForm {
+    margin: 50px auto 0;
+    width: 500px;
+}
+.letters{
+
+    font-size: 50px;
+    padding: 8px;
+    cursor: pointer;
+    border: 5px solid #00A8E8;
+}
+
+.letters:hover {
+    border: 5px solid white;
+}
+.loginForm {
+    margin: 0 auto;
+    position: relative;
+}
+
+.loginHome {
+    border: 3px white solid;
+    margin: 30px auto 0;
+    width: 80%;
+    display: block;
+}
+
+.searchHome:focus {
     outline-color: transparent;
     outline-style: none;
 }
@@ -525,3 +641,33 @@ ul {
     visibility: hidden!important;
     display: block!important;
 }
+
+.blinking-cursor {
+    font-weight: 100;
+    font-size: 30px;
+    color: #2E3D48;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: black;
+    }
+  }
+  
+  @-moz-keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: black;
+    }
+  }
+  

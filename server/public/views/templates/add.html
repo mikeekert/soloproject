@@ -21,20 +21,21 @@
     </section>
   </div>
   <div class="flexResult">
-    <div class="results" ng-repeat="result in ac.userObject.results track by $index" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="ac.selectGame(result)">
+    <div class="results" ng-repeat="result in ac.userObject.results track by $index" ng-mouseover="open = true" ng-mouseleave="open = false"
+      ng-click="ac.userService.selectGame(result)">
       <section class="section_8bit addForm resultsBlock">
         <div class="wrapper wrapMenu nowPlaying resultswrap">
-          <span class="resultText name"> 
+          <span class="resultText name">
             <p>{{ result.name }}
-              </p>
-            </span>
-          <span class="resultText date">( {{ result.release_dates[0].human }} )</span>
-          
-          <span class="resultImg">
+            </p>
+          </span>
+          <span class="resultText date">( {{ result.release_dates[0].human | limitTo: 4 }} )</span>
+
+          <span class="resultImg" ng-style="ac.userService.setfade(open)">
             <img ng-src="{{ result.image }}" class="resultImgSrc">
           </span>
           <!-- <div class="arrowholder"> -->
-            <span class="resultText up" ng-show="open">^</span>
+          <span class="resultText up" ng-show="open">^</span>
           <!-- </div> -->
 
         </div>
@@ -42,4 +43,30 @@
     </div>
 
   </div>
+
+  <div class="addForm" ng-repeat="i in ac.userObject.selectedGame">
+    <section class="section_8bit">
+      <div class="wrapper">
+        <div class="imgContainer">
+          <img ng-src="{{ i.coverart }}">
+        </div>
+        <div class="gameDescCont">
+          <span class="gameDesc nowPlaying">Name:
+            <input type="text" class="search" ng-model="i.name">
+          </span>
+          <span class="gameDesc nowPlaying">platform:
+              <input type="text" class="search" ng-model="i.platforms[0]">
+            </span>
+          <span class="gameDesc nowPlaying">HOURS PLAYED:
+            <input type="text" class="search" ng-model="ac.hoursIn">
+          </span>
+          <span class="gameDesc nowPlaying">ESTIMATED HOURS TO COMPLETE:
+            <input type="text" class="search" ng-model="ac.timetobeat">
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
 </div>

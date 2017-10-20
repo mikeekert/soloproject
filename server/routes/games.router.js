@@ -76,13 +76,23 @@ router.post('/api/:id', function (req, res) {
                 }
             }
             response.body.splice(5, response.body.length);
+
             // console.log(response.body);
             res.send(response.body);
         }).catch(error => {
             throw error;
         });
         // send back user object from database
+        client.platforms({
+            search: '*',
+            // order: 'popularity:desc',
+            fields: '*', // Return all fields
+            limit: 20, // Limit to 5 results
+            offset: 0, // Index offset for results
 
+        }).then(responsePlat=>{
+console.log(responsePlat);
+        });
     } else {
         // failure best handled on the server. do redirect here.
         console.log('not logged in');
