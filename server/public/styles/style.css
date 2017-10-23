@@ -640,3 +640,8 @@ ul {
 			margin: 0px auto;
 			padding: 10px 0; }
 
+			@media (max-width: 1300px){
+				.section_8bit.headMenu {
+					position: relative;
+				}
+			  }
