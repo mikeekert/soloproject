@@ -8,6 +8,11 @@
                     <img ng-src="{{ current.coverart }}" class="currentGameImage">
                 </div>
                 <div class="gameDescCont">
+                        <div class="progress">
+                                <div class="progress-bar" role="progressbar" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
+                                    <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
+                                </div>
+                            </div>
                     <span class="nowPlaying">NOW PLAYING:</span>
                     <span class="gameDesc nowPlaying">{{ current.title }}</span>
                     <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
@@ -15,11 +20,7 @@
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
                     <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
                 </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
-                        <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
-                    </div>
-                </div>
+
             </div>
         </section>
     </div>
