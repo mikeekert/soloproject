@@ -257,7 +257,9 @@ html {
 	max-width: 100%; }
  
  
-.imgContainerOld { height: 100px; }
+.imgContainerOld { height: auto; 
+	min-width: 180px;
+}
  
  
 .imgHome { width: 75px; }
@@ -542,7 +544,6 @@ li { float: left; }
  
 	.section_8bit.headMenu {
 		width: 350px;
-		position: absolute;
 		top: -5px; }
  
 	.section_8bit.addFormTitle {
@@ -640,43 +641,89 @@ ul {
 			margin: 0px auto;
 			padding: 10px 0; }
 
-@media (min-width: 1120px) and (max-width: 1300px){
-	.section_8bit.headMenu {
-		position: relative;
-	}
+
+@media (min-width: 410px) and (max-width: 767px){
+
 	.sr-only {
-		font-size: 1.6vw;
+		font-size: 3.3vw;
+	}
+	.imgContainerOld { height: auto; }
+	.completeBox {     
+		left: 10%;
+		top: -20%; }
+	.nowPlaying { font-size: 3vw; }
+	.progress {
+		width:auto;
+	}
+	.instructions .container h1 {
+		font-size: 5vw;
+	}
+	.section_8bit .wrapper {
+		padding: 20px;
 	}
 }
 
-@media (min-width: 480px) and (max-width: 1120px){
-	.section_8bit.headMenu {
-		position: relative;
-	}
-	.sr-only {
-		font-size: 1.6vw;
-	}
-}
+@media (min-width: 767) and (max-width: 1119px){
 
-@media (max-width: 825px){
+	.sr-only {
+		font-size: 3.3vw;
+	}
+	.imgContainerOld { height: auto; }
+
+	.completeBox {     
+		left: 10%;
+		top: -20%; }
+
+	.nowPlaying { font-size: 3vw; }
+
 	.progress {
 		width:100%;
 	}
-
 }
 
-@media (min-width: 1300px){
+
+@media (min-width: 1120px) and (max-width: 1300px){
+
+	.sr-only {
+		font-size: 1.6vw;
+	}
+}
+
+
+@media (min-width: 1300px) {
+
 	.section_8bit.headMenu {
 		position: absolute;
+		top: 5px;
+	}
+
+	.completeBox{
+		left: 5%;
+		top: -20%;
+	}
+
+	.headNav {
+		height: 75px;
 	}
 	.gameDesc {
 		font-size: 1vw;
 	}
 
 	.sr-only {
-		font-size: 1.8vw;
+		font-size: 1.6vw;
 	}
 	.nowPlaying {
-		font-size: 1.6vw;
+		font-size: 1.4vw;
+	}
+	.container {
+		width: 75%;
+	}
+
+	.headNav {
+		padding: 10px 0px;		
+	}
+
+	.instructions .container h1{
+		padding: 10px 0;
 	}
 }
