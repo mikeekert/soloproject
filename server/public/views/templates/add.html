@@ -55,7 +55,7 @@
             <input type="text" class="search" ng-model="i.name">
           </span>
           <span class="gameDesc nowPlaying">platform:
-              <input type="text" class="search" ng-model="i.platforms[0]">
+              <input type="text" class="search" ng-model="i.system">
             </span>
           <span class="gameDesc nowPlaying">HOURS PLAYED:
             <input type="text" class="search" ng-model="ac.hoursIn">
@@ -63,6 +63,12 @@
           <span class="gameDesc nowPlaying">ESTIMATED HOURS TO COMPLETE:
             <input type="text" class="search" ng-model="ac.timetobeat">
           </span>
+          <span class="gameDesc nowPlaying">NOW PLAYING (yes/no):
+              <input type="checkbox" class="search" ng-model="ac.nowplaying">
+            </span>
+            <button class="end arrowLink" ng-click="ac.userService.sendGame()">END</button>
+            
+
         </div>
       </div>
     </section>

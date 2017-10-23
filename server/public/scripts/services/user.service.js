@@ -53,6 +53,22 @@ myApp.factory('UserService', function ($http, $location) {
       userObject.results = [];
     },
     
+    sendGame : function () {
+      userObject.gameObj = {
+        user: userObject.userName,
+        title: userObject.selectedGame.name,
+        platform: userObject.selectedGame.system,
+        // releasedate: userObject.selectedGame.release_dates[0].human,
+        coverart: userObject.selectedGame.image,
+        timetobeat: userObject.selectedGame.time_to_beat,
+        nowplaying: userObject.nowplaying,
+        completed: false,
+        progress: userObject.hoursIn
+      };
+      $http.post('/games/', userObject.gameObj).then(function(response){
+        console.log('posted game');
+      });
+    },
 
     setfade: function (target) {
       if (target) {

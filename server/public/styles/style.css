@@ -20,7 +20,7 @@
     visibility: hidden!important;
     display: block!important;
 }
-@keyframes blink {
+/* @keyframes blink {
     from,
     to {
         color: transparent;
@@ -38,7 +38,7 @@
     50% {
         color: black;
     }
-}
+} */
 
 
 @-webkit-keyframes uparrow {
@@ -152,7 +152,8 @@ html {
  
 #container { margin-top: 10px; }
  
- 
+.currentGameImage { max-width: 200px;} 
+
 .dataArea {
 	height: 200px;
 	margin: 0 auto;
@@ -467,8 +468,7 @@ li { float: left; }
 		background-color: rgba(38, 37, 36, 0.72);
 		-webkit-transition: background-color 200ms linear;
 		-ms-transition: background-color 200ms linear;
-		transition: background-color 200ms linear;
-		/* opacity: .5; */ }
+		transition: background-color 200ms linear; }
  
  
 .search {
@@ -602,7 +602,6 @@ ul {
 	margin: 0;
 	overflow: hidden;
 	padding: 0; }
- 
  
 .up {
 	-webkit-animation: uparrow 0.6s infinite alternate ease-in-out;
