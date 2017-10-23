@@ -203,7 +203,16 @@ html {
 	display: flex; }
  
  
-.gameDesc { margin: 0 25px; }
+.gameDesc { 
+	margin: 2px 25px; 
+	text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
+	font-family: 'press_start_kregular'; 
+	font-size: 15px;
+	}
+	.gdTitle {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
  
  
 .gameDescCont {
@@ -352,7 +361,7 @@ li { float: left; }
  
 .nowPlaying {
 	font-family: "press_start_kregular", serif;
-	font-size: 30px;
+	font-size: 22px;
 	margin: 0 25px 10px;
 	text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 	display: flex; }

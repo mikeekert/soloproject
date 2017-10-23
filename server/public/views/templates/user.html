@@ -10,11 +10,10 @@
                 <div class="gameDescCont">
                     <span class="nowPlaying">NOW PLAYING:</span>
                     <span class="gameDesc nowPlaying">{{ current.title }}</span>
-                    <span class="gameDesc">
-                        <img src=https://upload.wikimedia.org/wikipedia/en/0/04/Nintendo_64_Logo.svg class="platform">
-                    </span>
+                    <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
+                    <span class="gameDesc">PLATFORM: {{ current.platform }}</span>
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
-                    <span class="gameDesc">ESTIMATED HOURS TO COMPLETE: {{ current.timetobeat }}</span>
+                    <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
                 </div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
@@ -24,16 +23,19 @@
             </div>
         </section>
     </div>
-    <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:false} | filter: {completed:false}'>
+    <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:null} | filter: {completed:false}'>
         <section class="section_8bit">
             <div class="wrapper old">
                 <div class="imgContainerOld">
                     <img ng-src="{{ current.coverart }}" class="imgBW">
                 </div>
                 <div class="gameDescCont">
-                    <span class="gameDesc">{{ current.title }}</span>
-                    <span class="gameDesc">RELEASE DATE: {{ current.releasedate }}</span>
-                    <span class="gameDesc">In Progress</span>
+                    <span class="gameDesc gdTitle">{{ current.title }}</span>
+                    <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
+                    <span class="gameDesc">PLATFORM: {{ current.platform }}</span>
+                    <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
+                    
+                    
                 </div>
                 <div class="progress">
                     <div class="progress-bar oldBar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
