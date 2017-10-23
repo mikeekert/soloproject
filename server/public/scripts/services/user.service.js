@@ -7,14 +7,11 @@ myApp.factory('UserService', function ($http, $location) {
     userObject: userObject,
 
     getuser: function () {
-      console.log('UserService -- getuser');
       $http.get('/user').then(function (response) {
         if (response.data.username) {
-          // user has a curret session on the server
           userObject.userName = response.data.username;
-          console.log('UserService -- getuser -- User Data: ', userObject.userName);
+          userObject.userID = response.data.id;
         } else {
-          console.log('UserService -- getuser -- failure');
           // user has no session, bounce them back to the login page
           $location.path("/home");
         }
@@ -25,48 +22,59 @@ myApp.factory('UserService', function ($http, $location) {
     },
 
     logout: function () {
-      console.log('UserService -- logout');
       $http.get('/user/logout').then(function (response) {
-        console.log('UserService -- logout -- logged out');
         $location.path("/home");
       });
     },
 
     getgames: function () {
+      userObject.selectedGame = [];
       $http.get('/games/').then(function (response) {
         userObject.games = response.data;
-        console.log('UserService -- games -- getting games');
-        console.log('userObject -- GET /games/ -- Response:', userObject.games);
       });
     },
 
     apiSearch: function (name) {
+      userObject.selectedGame = [];
       $http.post('/games/api/' + name).then(function (response) {
-        console.log('UserService -- API call:', response);
         userObject.results = response.data;
       });
     },
 
     selectGame: function (target) {
-      userObject.selectedGame = [target];
-      console.log(userObject.selectedGame);
-      userObject.results = [];
+      $http.post('/games/hours/' + target.name).then(function (res) {
+        userObject.selectedGame = [target];
+        userObject.results = [];
+        userObject.selectedGame[0].time = res.data[0].gameplayMain;
+        console.log('selected this one: ', userObject.selectedGame);
+        
+      });
     },
-    
-    sendGame : function () {
+
+    sendGame: function () {
+      
       userObject.gameObj = {
-        user: userObject.userName,
-        title: userObject.selectedGame.name,
-        platform: userObject.selectedGame.system,
-        // releasedate: userObject.selectedGame.release_dates[0].human,
-        coverart: userObject.selectedGame.image,
-        timetobeat: userObject.selectedGame.time_to_beat,
+        user: userObject.userID,
+        title: userObject.selectedGame[0].name,
+        releasedate: userObject.selectedGame[0].release_dates[0].human,
+        platform: userObject.selectedGame[0].system.name,
+        coverart: userObject.selectedGame[0].image,
+        timetobeat: 20,
         nowplaying: userObject.nowplaying,
         completed: false,
         progress: userObject.hoursIn
       };
-      $http.post('/games/', userObject.gameObj).then(function(response){
-        console.log('posted game');
+
+      console.log('ready to post: ', userObject.gameObj);
+      
+      
+      $http.post('/games/', userObject.gameObj).then(function (response) {
+        console.log(response);
+      }).then(function () {
+        userObject.selectedGame = [];
+        userObject.nowplaying = [];
+        userObject.hoursIn = [];
+        $location.path("/user");
       });
     },
 

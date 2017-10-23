@@ -37,7 +37,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
             console.log('LoginController -- login -- success: ', response.data);
             // location works with SPA (ng-route)
             vm.userObject.games = [];
-            vm.userObject.results = [];           
+            vm.userObject.results = [];          
             $location.path('/user'); // http://localhost:5000/#/user
           } else {
             console.log('LoginController -- login -- failure: ', response);
@@ -61,8 +61,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
           $location.path('/home');
         }).catch(function(response) {
           console.log('LoginController -- registerUser -- error');
-          vm.message = "Please try again."
+          vm.message = "Please try again.";
         });
       }
-    }
+    };
 });

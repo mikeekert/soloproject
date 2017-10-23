@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../modules/pool.js');
 var datatable = require('../modules/datatable');
+var _ = require('underscore');
+let hltb = require('howlongtobeat');
+let hltbService = new hltb.HowLongToBeatService();
 
 
 const igdb = require('igdb-api-node').default;
@@ -10,9 +13,13 @@ require('dotenv').config();
 global['3scaleKey'] = process.env.IGDB_API;
 const client = igdb();
 
+var hltbpromise = '';
+
+var hltblookup = function (game) {
+    return hltbService.search(game);
+};
 
 
-//   console.log(result[0].name);
 
 router.post('/', function (req, res) {
     console.log('post /user route');
@@ -23,64 +30,16 @@ router.post('/', function (req, res) {
                 console.log(conErr);
                 res.sendStatus(500);
             } else {
+                const junctionID = [req.body.user, req.body.progress, req.body.completed, req.body.nowplaying, req.body.timetobeat, req.body.title, req.body.platform, req.body.releasedate, req.body.coverart];
+                const junctionQuery = "INSERT into user_game (user_id, progress, completed, nowplaying, timetobeat, title, platform, releasedate, coverart) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
 
-
-                const insert = "INSERT into games (title, platform, releasedate, coverart) VALUES ($1, $2, $3, $4)";
-                const insertData = [ req.body.title, req.body.platform, req.body.releasedate, req.body.coverart ];
-
-                const userID = req.user;
-                const userLookup = "SELECT users.id from users where username = $1";
-
-                const gameID = req.title;
-                const gameLookup = "SELECT games.id from games where title = $1";
-
-                const junctionID = [lookup(userID, userLookup), lookup(gameID, userLookup), req.body.progress, req.body.completed, req.body.nowplaying, req.body.timetobeat];
-                const junctionQuery = "INSERT into junction_user_game (user_id, game_id, progress, completed, nowplaying, timetobeat) VALUES ($1, $2, $3, $4, $5, $6)";
-
-                var lookup = function(query, values) {
-                    client.query(query, values, function (queryErr, resultObj) {
-                        done();
-                        if (queryErr) {
-                            console.log(queryErr);
-                            res.sendStatus(500);
-                        } else {
-                            return(resultObj.rows);
-                        }
-                    });
-                };
-
-                // SELECT games.id from games where title='game';
-                // INSERT into junction_user_game (user_id, game_id, progress, completed, nowplaying) VALUES ('1', '7', '3', false, false);
-            }
-        });
-        // send back user object from database
-    } else {
-        // failure best handled on the server. do redirect here.
-        console.log('not logged in');
-        // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
-        res.send(false);
-    }
-});
-
-router.get('/', function (req, res) {
-    console.log('get /user route');
-    // check if logged in
-    if (req.isAuthenticated()) {
-        pool.connect(function (conErr, client, done) {
-            if (conErr) {
-                console.log(conErr);
-                res.sendStatus(500);
-            } else {
-                const dbId = req.user.username;
-                const queryGet = "SELECT games.*, junction_user_game.* FROM users JOIN junction_user_game ON users.id = junction_user_game.user_id JOIN games ON junction_user_game.game_id = games.id WHERE users.username = $1";
-                client.query(queryGet, [dbId], function (queryErr, resultObj) {
+                client.query(junctionQuery, junctionID, function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
                         console.log(queryErr);
                         res.sendStatus(500);
                     } else {
                         res.send(resultObj.rows);
-                        console.log(resultObj.rows);
                     }
                 });
             }
@@ -95,6 +54,63 @@ router.get('/', function (req, res) {
 });
 
 
+
+router.post('/hours/:id', function (req, res) {
+    console.log('get /user/hours route, name: ', req.params);
+    name = req.params.id;
+    // check if logged in
+    if (req.isAuthenticated()) {
+        pool.connect(function (conErr, client, done) {
+            if (conErr) {
+                console.log(conErr);
+                res.sendStatus(500);
+            } else {
+                hltblookup(name).then(function (resp) {
+                    res.send(resp);
+                });
+            }
+        });
+        // send back user object from database
+    } else {
+        // failure best handled on the server. do redirect here.
+        console.log('not logged in');
+        // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+        res.send(false);
+    }
+});
+
+
+
+router.get('/', function (req, res) {
+    console.log('get /user route');
+    // check if logged in
+    if (req.isAuthenticated()) {
+        pool.connect(function (conErr, client, done) {
+            if (conErr) {
+                console.log(conErr);
+                res.sendStatus(500);
+            } else {
+                const dbId = req.user.username;
+                const queryGet = "SELECT users.username, user_game.* FROM user_game INNER JOIN users ON user_game.user_id = users.id WHERE users.username = $1";
+                client.query(queryGet, [dbId], function (queryErr, resultObj) {
+                    done();
+                    if (queryErr) {
+                        console.log(queryErr);
+                        res.sendStatus(500);
+                    } else {
+                        res.send(resultObj.rows);
+                    }
+                });
+            }
+        });
+    } else {
+        // failure best handled on the server. do redirect here.
+        console.log('not logged in');
+        // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+        res.send(false);
+    }
+});
+
 router.post('/api/:id', function (req, res) {
     response = [];
     if (req.isAuthenticated()) {
@@ -104,38 +120,36 @@ router.post('/api/:id', function (req, res) {
             fields: '*', // Return all fields
             limit: 20, // Limit to 5 results
             offset: 0, // Index offset for results
-
         }).then(response => {
-            console.log('my array of games length:', response.body.length);
-
             j = response.body.length;
             while (j--) {
                 // for (var j = 0; j < response.body.length; j++) {
                 if (response.body[j].hasOwnProperty('cover') === false) {
-                    console.log(response.body[j].name, ' has no image');
                     response.body.splice(j, 1);
                 } else if (response.body[j].name.includes('Collector')) {
-                    console.log('***', response.body[j].name, '*** removed!');
                     response.body.splice(j, 1);
                 } else if (response.body[j].name.includes('Edition')) {
-                    console.log('***', response.body[j].name, '*** removed!');
                     response.body.splice(j, 1);
                 } else {
-                    console.log('setting up image for:', response.body[j].name);
-
                     response.body[j].image = client.image({
                         cloudinary_id: response.body[j].cover.cloudinary_id
                     }, 'cover_small_2x', 'jpg');
                 }
             }
-
             response.body.splice(5, response.body.length);
-            res.send(response.body);
+            var newArray = response.body;
+
+            for (var i = 0; i < newArray.length; i++) {
+                console.log('id here: ', newArray[i].platforms);
+                newArray[i].system = _.findWhere(datatable, {id: newArray[i].platforms[0]});
+                console.log('name here: ',newArray[i].system);
+            }
+
+            res.send(newArray);
         }).catch(error => {
             throw error;
         });
         // send back user object from database
-
     } else {
         // failure best handled on the server. do redirect here.
         console.log('not logged in');

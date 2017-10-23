@@ -4,5 +4,5 @@ myApp.controller('AddController', function (UserService) {
 
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
-  
+  vm.userObject.selectedGame = [];
 });

@@ -52,19 +52,19 @@
         </div>
         <div class="gameDescCont">
           <span class="gameDesc nowPlaying">Name:
-            <input type="text" class="search" ng-model="i.name">
+            {{i.name}}
           </span>
           <span class="gameDesc nowPlaying">platform:
-              <input type="text" class="search" ng-model="i.system">
+              <input type="text" class="search" ng-model="i.system.name">
             </span>
           <span class="gameDesc nowPlaying">HOURS PLAYED:
-            <input type="text" class="search" ng-model="ac.hoursIn">
+            <input type="text" class="search" ng-model="ac.userObject.hoursIn">
           </span>
           <span class="gameDesc nowPlaying">ESTIMATED HOURS TO COMPLETE:
-            <input type="text" class="search" ng-model="ac.timetobeat">
+            <input type="text" class="search" ng-model="i.time">
           </span>
           <span class="gameDesc nowPlaying">NOW PLAYING (yes/no):
-              <input type="checkbox" class="search" ng-model="ac.nowplaying">
+              <input type="checkbox" class="search" ng-model="ac.userObject.nowplaying">
             </span>
             <button class="end arrowLink" ng-click="ac.userService.sendGame()">END</button>
             
