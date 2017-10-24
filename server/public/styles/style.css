@@ -641,6 +641,47 @@ ul {
 			margin: 0px auto;
 			padding: 10px 0; }
 
+@media (max-width: 409px){
+	
+	.headNav {
+		height: 125px;
+	}
+
+	.instructions .container h1 {
+		font-size: 7em;
+	}
+
+	.login {
+		width: 90%;
+	}
+
+	.gifContainer {
+		transform: scale(0.95);
+		margin: 0 auto -60px;
+	}
+
+	.loginFormHome {
+		width: 60%;
+	}
+
+	.loginHome {
+		font-size: 60px;
+		height: auto;
+	}
+
+	.searchHome {
+		height: 100px;
+		font-size: 60px;
+	}
+
+	.imgHomeController{
+		max-width: 400px;
+	}
+
+
+
+}
+
 
 @media (min-width: 410px) and (max-width: 767px){
 
@@ -663,7 +704,7 @@ ul {
 	}
 }
 
-@media (min-width: 767) and (max-width: 1119px){
+@media (min-width: 768px) and (max-width: 1119px){
 
 	.sr-only {
 		font-size: 3.3vw;
