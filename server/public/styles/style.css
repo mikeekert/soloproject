@@ -147,6 +147,18 @@ html {
 		margin: 0px auto; }
  
  
+.checkNowPlay {
+	width: 30px; /*Desired width*/
+	height: 30px; /*Desired height*/
+	cursor: pointer;
+	/* -webkit-appearance: none; */
+	border: 3px solid white;
+    box-sizing: border-box;
+    margin: 0;
+
+}
+
+
 .completeBox {
 	-ms-transform: scale(0.7);
 	-webkit-transform: scale(0.7);
@@ -163,7 +175,7 @@ html {
 	width: 90%; }
  
 	.container p {
-		margin-top: 14px;
+		margin: 15px;
 		align-items: center;
 		justify-content: center; }
  
@@ -236,6 +248,7 @@ html {
 .gameDescCont {
 	display: flex;
 	flex:2;
+	margin: 0 15px;
 	flex-direction: column; }
  
  
@@ -371,7 +384,7 @@ li { float: left; }
 	.message p { margin-left: 10px; }
  
  
-.name { min-height: 165px; }
+.name { min-height: 140px; }
  
 	.name p { margin: 0; }
  
@@ -384,7 +397,7 @@ li { float: left; }
 .nowPlaying {
 	font-family: "press_start_kregular", serif;
 	font-size: 2vw;
-	margin: 0 0 10px;
+	margin: 0 0 5px;
 	text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 	display: flex; }
  
@@ -503,8 +516,8 @@ li { float: left; }
  
 .search {
 	font-family: "press_start_kregular", serif;
-	font-size: 30px;
-	margin: 0 25px 10px;
+	font-size: 1.4vw;
+	margin: 0 25px 0;
 	text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 	background-color: rgb(38, 37, 36);
 	border: 3px white;
@@ -560,8 +573,24 @@ li { float: left; }
 				outline-color: transparent;
 				outline-style: none; }
  
- 
-.searchLabel { width: 200px; }
+ .searchLabel {
+	 flex:1;
+	 line-height: 50px;
+	 
+ }
+ 	.innerInput {
+		width: 100%;
+		box-sizing: border-box;
+		margin: 0;
+	 }
+	.Left {
+		font-size: 1.2vw;
+	}
+
+ .searchLabelInner {
+	 flex:1;
+	 align-self: center;
+ }
  
  
 .section_8bit {
@@ -674,7 +703,7 @@ ul {
  
 	.wrapper.wrapMenu.nowPlaying { font-size: 20px; }
  
-		.wrapper.wrapMenu.nowPlaying.resultswrap { min-height: 525px; }
+		.wrapper.wrapMenu.nowPlaying.resultswrap { min-height: 500px; }
  
 		.wrapper.wrapMenu.nowPlaying>li>a {
 			width: 225px;
@@ -734,6 +763,10 @@ and (device-height : 812px)  {
 
 	.gameDesc {
 		font-size: 2vw;
+	}
+
+	.wrapper.wrapMenu.nowPlaying>li>a {
+		font-size: 30px;
 	}
 
 	.sr-only {
@@ -844,6 +877,10 @@ and (device-height : 812px)  {
 		top: 5px;
 	}
 
+	.gameDescCont {
+		flex: 3.3;
+	}
+
 	.completeBox{
 		left: 5%;
 		top: -20%;
@@ -860,7 +897,8 @@ and (device-height : 812px)  {
 		font-size: 1.6vw;
 	}
 	.nowPlaying {
-		font-size: 1.4vw;
+		font-size: 1.8vw;
+		
 	}
 	.container {
 		width: 75%;

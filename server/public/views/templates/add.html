@@ -45,29 +45,39 @@
   </div>
 
   <div class="addForm" ng-repeat="i in ac.userObject.selectedGame">
+      
     <section class="section_8bit">
       <div class="wrapper">
         <div class="imgContainer">
-          <img ng-src="{{ i.coverart }}">
+          <img ng-src="{{ i.image }}">
         </div>
         <div class="gameDescCont">
-          <span class="gameDesc nowPlaying">Name:
-            {{i.name}}
+          <span class="gameDesc nowPlaying">
+            <span class="searchLabel Left">NAME:</span>
+            <span class="searchLabelInner">{{i.name}}</span>
           </span>
-          <span class="gameDesc nowPlaying">platform:
-              <input type="text" class="search" ng-model="i.system.name">
-            </span>
-          <span class="gameDesc nowPlaying">HOURS PLAYED:
-            <input type="text" class="search" ng-model="ac.userObject.hoursIn">
+
+          <span class="gameDesc nowPlaying">
+            <span class="searchLabel Left">PLATFORM:</span>
+            <span class="searchLabelInner"><input type="text" class="search innerInput" ng-model="i.system.name"></span>
+
           </span>
-          <span class="gameDesc nowPlaying">ESTIMATED HOURS TO COMPLETE:
-            <input type="text" class="search" ng-model="i.time">
+          <span class="gameDesc nowPlaying">
+            <span class="searchLabel Left">HOURS PLAYED: </span>
+
+            <span class="searchLabelInner"><input type="text" class="search innerInput" ng-model="ac.userObject.hoursIn"></span>
           </span>
-          <span class="gameDesc nowPlaying">NOW PLAYING (yes/no):
-              <input type="checkbox" class="search" ng-model="ac.userObject.nowplaying">
-            </span>
-            <button class="end arrowLink" ng-click="ac.userService.sendGame()">END</button>
-            
+          <span class="gameDesc nowPlaying">
+            <span class="searchLabel Left">HOURS TO COMPLETE: </span>
+
+            <span class="searchLabelInner"><input type="text" class="search innerInput" ng-model="i.time"></span>
+          </span>
+          <span class="gameDesc nowPlaying">
+            <span class="searchLabel Left" for="checkbox">NOW PLAYING: </span>
+            <span class="searchLabelInner"><input type="checkbox" class="checkNowPlay" ng-model="ac.userObject.nowplaying" id="checkbox"></span>
+          </span>
+          <span class="searchLabel"><button class="end arrowLink" ng-click="ac.userService.sendGame()">ENTER</button></span>
+
 
         </div>
       </div>
