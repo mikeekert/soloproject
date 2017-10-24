@@ -222,7 +222,7 @@ html {
  
  
 .gameDesc { 
-	margin: 2px 25px; 
+	margin: 2px 0; 
 	text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 	font-family: 'press_start_kregular'; 
 	font-size: 1.5vw;
@@ -235,8 +235,8 @@ html {
  
 .gameDescCont {
 	display: flex;
-	flex-direction: column;
-	flex: 2; }
+	flex:2;
+	flex-direction: column; }
  
  
 .gameResult {
@@ -254,7 +254,6 @@ html {
 	z-index: -1; }
  
  
-/* .headNav { height: 75px; } */
  
  
 .homeFooter {
@@ -275,8 +274,10 @@ html {
 	max-width: 100%; }
  
  
-.imgContainerOld { height: auto; 
+.imgContainerOld, .imgContainer { 
+	height: auto; 
 	min-width: 180px;
+	flex:1;
 }
  
  
@@ -383,7 +384,7 @@ li { float: left; }
 .nowPlaying {
 	font-family: "press_start_kregular", serif;
 	font-size: 2vw;
-	margin: 0 25px 10px;
+	margin: 0 0 10px;
 	text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
 	display: flex; }
  
@@ -421,7 +422,7 @@ li { float: left; }
 	border-radius: 4px;
 	box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
 	height: 60px;
-	margin: 0 20px 20px;
+	margin: 0 0 15px;
 	overflow: hidden;
 	width: 70%; }
  
@@ -731,8 +732,16 @@ ul {
 and (device-width : 375px) 
 and (device-height : 812px)  {
 
+	.gameDesc {
+		font-size: 2vw;
+	}
+
 	.sr-only {
 		font-size: 3.3vw;
+	}
+
+	.progress{
+		width: auto;
 	}
 	.imgContainerOld { height: auto; }
 	.completeBox {     
