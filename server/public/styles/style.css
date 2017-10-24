@@ -20,6 +20,8 @@
     visibility: hidden!important;
     display: block!important;
 }
+
+
 /* @keyframes blink {
     from,
     to {
@@ -61,6 +63,22 @@
         -webkit-transform: translateY(0.3em);
         opacity: 0.9
     }
+}
+
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+-webkit-appearance: none;
+}
+
+input[disabled], textarea[disabled],
+select[disabled='disabled']{
+   -webkit-text-fill-color: rgb(255, 255, 255); 
+   -webkit-opacity: 1; 
+
 }
  
 a {
@@ -236,7 +254,7 @@ html {
 	z-index: -1; }
  
  
-.headNav { height: 75px; }
+/* .headNav { height: 75px; } */
  
  
 .homeFooter {
@@ -336,6 +354,7 @@ li { float: left; }
 	margin: 30px auto 0;
 	width: 80%;
 	display: block;
+	-webkit-appearance: none;
 	min-width: 200px; }
  
  
@@ -378,7 +397,7 @@ li { float: left; }
 	color: #fff;
 	font-size: 30px;
 	font-family: "press_start_kregular", serif;
-	margin: 200px auto;
+	margin: 0 auto;
 	text-shadow: 7px 5px rgba(0, 0, 0, .6);
 	font-weight: 600;
 	text-align: center;
@@ -393,7 +412,6 @@ li { float: left; }
 	text-shadow: 7px 5px rgba(0, 0, 0, .6);
 	font-weight: 600;
 	text-align: center;
-	width: 100%;
 	text-decoration: none }
  
  
@@ -514,11 +532,32 @@ li { float: left; }
 	flex-basis: 56%;
 	min-width: 0;
 	width: 101%;
+	-webkit-appearance: none;
 	margin: 10px 0; }
  
 	.searchHome:focus {
 		outline-color: transparent;
 		outline-style: none; }
+
+		.searchReg {
+			font-family: "press_start_kregular", serif;
+			font-size: 30px;
+			text-shadow: 3px 2px rgba(0, 166, 232, 0.51);
+			background-color: rgb(38, 37, 36);
+			border: 3px white;
+			border-style: solid;
+			padding: 10px 0;
+			color: white;
+			text-indent: 5px;
+			flex-basis: 56%;
+			min-width: 0;
+			width: 101%;
+			-webkit-appearance: none;
+			margin: 10px 0; }
+		 
+			.searchReg:focus {
+				outline-color: transparent;
+				outline-style: none; }
  
  
 .searchLabel { width: 200px; }
@@ -667,6 +706,7 @@ ul {
 	.loginHome {
 		font-size: 60px;
 		height: auto;
+		-webkit-appearance: none;
 	}
 
 	.searchHome {
@@ -678,12 +718,18 @@ ul {
 		max-width: 400px;
 	}
 
+	.letters {
+		font-size: 80px;
+	}
+
 
 
 }
 
 
-@media (min-width: 410px) and (max-width: 767px){
+@media only screen 
+and (device-width : 375px) 
+and (device-height : 812px)  {
 
 	.sr-only {
 		font-size: 3.3vw;
@@ -697,10 +743,61 @@ ul {
 		width:auto;
 	}
 	.instructions .container h1 {
-		font-size: 5vw;
+		font-size: 90px;
 	}
 	.section_8bit .wrapper {
 		padding: 20px;
+	}
+
+	.letters {
+		font-size: 80px;
+	}
+	.containers {
+		width: 90%;
+	}
+
+	.regAlpha{
+		width: 85%;
+		margin: 50px auto 0;
+	}
+
+	.regForm {
+		width: 70%;
+	}
+
+	.searchReg, .searchHome{
+		height: 75px;
+		font-size: 50px;
+	}
+
+	
+
+	.pressStart {
+		font-size: 50px;
+	}
+
+	.pressStartHome {
+		font-size: 45px;
+		margin: 40px auto;
+	}
+	
+	.lead {
+		font-size: 50px;
+	}
+
+	.loginHome {
+		width: 80%;
+		font-size: 50px;
+		padding:25px;
+		height: auto;
+	}
+
+	.loginFormHome{
+		width: 65%;
+	}
+
+	.imgHomeController{
+		max-width: 400px;
 	}
 }
 
