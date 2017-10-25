@@ -6,7 +6,6 @@ var _ = require('underscore');
 let hltb = require('howlongtobeat');
 let hltbService = new hltb.HowLongToBeatService();
 
-
 const igdb = require('igdb-api-node').default;
 require('dotenv').config();
 
@@ -18,8 +17,6 @@ var hltbpromise = '';
 var hltblookup = function (game) {
     return hltbService.search(game);
 };
-
-
 
 router.post('/', function (req, res) {
     console.log('post /user route');
@@ -53,8 +50,6 @@ router.post('/', function (req, res) {
     }
 });
 
-
-
 router.post('/hours/:id', function (req, res) {
     console.log('get /user/hours route, name: ', req.params);
     name = req.params.id;
@@ -78,8 +73,6 @@ router.post('/hours/:id', function (req, res) {
         res.send(false);
     }
 });
-
-
 
 router.get('/', function (req, res) {
     console.log('get /user route');
