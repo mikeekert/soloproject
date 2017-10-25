@@ -8,6 +8,11 @@ myApp.factory('UserService', function ($http, $location) {
     userObject.editGame = [];
     $http.get('/games/').then(function (response) {
       userObject.games = response.data;
+        for (var i = 0; i < userObject.games.length; i++) {
+          if(userObject.games[i].progress > userObject.games[i].timetobeat) {
+            userObject.games[i].progress = userObject.games[i].timetobeat;
+          }          
+        }
     });
   };
 
@@ -45,7 +50,8 @@ myApp.factory('UserService', function ($http, $location) {
       userObject.selectedGame = [];
       $http.post('/games/api/' + name).then(function (response) {
         userObject.results = response.data;
-      });
+        console.log('api call array (userObject.results): ',userObject.results);
+      });      
     },
 
     selectGame: function (target) {
@@ -64,6 +70,9 @@ myApp.factory('UserService', function ($http, $location) {
     },
 
     updateGame: function (target) {
+      if (target.nowplaying == null) {
+        target.nowplaying = false;
+      }
       userObject.updateGm = {
         user: target.usergame_id,
         title: target.title,
@@ -78,6 +87,22 @@ myApp.factory('UserService', function ($http, $location) {
       console.log(userObject.updateGm);
       $http.put('/games/', userObject.updateGm).then(function (response) {
       }).then(getgames());
+      
+    },
+
+    calcPercent: function(target) {
+      var width =  parseInt( ( (target.progress / target.timetobeat)*100).toFixed(0) );
+      console.log('width:', width);
+      if (width > 100) {
+        width=100;
+        console.log('width adj:', width);
+        
+      }
+      var strCss = '{"width":'+width+'%}';
+      console.log(strCss);
+      
+      
+      return strCss;
     },
 
     deleteGame: function (target) {
@@ -98,6 +123,9 @@ myApp.factory('UserService', function ($http, $location) {
         completed: false,
         progress: userObject.hoursIn
       };
+      if (userObject.gameObj.nowplaying == null) {
+        userObject.gameObj.nowplaying = false;
+      }
       $http.post('/games/', userObject.gameObj).then(function (response) {
         console.log(response);
       }).then(function () {

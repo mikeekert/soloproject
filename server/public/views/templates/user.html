@@ -24,7 +24,7 @@
             </div>
         </section>
     </div>
-    <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:null} | filter: {completed:false}'>
+    <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:false} | filter: {completed:false}'>
         <section class="section_8bit" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
             <div class="wrapper old">
                 <div class="imgContainerOld">
@@ -33,6 +33,7 @@
                 <div class="gameDescCont">
                     <div class="progress">
                         <div class="progress-bar oldBar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
+                            
                             <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
                         </div>
                     </div>
@@ -40,6 +41,8 @@
                     <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
                     <span class="gameDesc">PLATFORM: {{ current.platform }}</span>
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
+                    <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
+                    
 
 
                 </div>
@@ -112,9 +115,9 @@
                         </span>
                     </span>
                     <span class="searchLabel nowPlaying saveDel">
-                        <button class="end editSelect editBtn" ng-click="uc.userService.updateGame(i)">SAVE</button>
-                        <button class="end editSelect editBtn" ng-click="uc.userService.deleteGame(i)">DELETE</button>
-                        <button class="end editSelect editBtn" ng-click="uc.userService.cancel()">CANCEL</button>
+                        <button class="end editArrow editBtn" ng-click="uc.userService.updateGame(i)">SAVE</button>
+                        <button class="end editArrow editBtn" ng-click="uc.userService.deleteGame(i)">DELETE</button>
+                        <button class="end editArrow editBtn" ng-click="uc.userService.cancel()">CANCEL</button>
                     </span>
                 </div>
             </div>
