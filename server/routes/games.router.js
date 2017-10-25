@@ -180,4 +180,33 @@ router.put('/', function(req,res) {
     }
 });
 
+router.delete('/:id', function(req,res) {
+    if (req.isAuthenticated()) {
+        pool.connect(function (conErr, client, done) {
+            if (conErr) {
+                console.log(conErr);
+                res.sendStatus(500);
+            } else {
+                console.log('DELETE data',req.params.id);
+                const dbId = [req.params.id];
+                const queryGet = "DELETE FROM user_game WHERE usergame_id = $1";
+                client.query(queryGet, dbId, function (queryErr, resultObj) {
+                    done();
+                    if (queryErr) {
+                        console.log(queryErr);
+                        res.sendStatus(500);
+                    } else {
+                        res.send(resultObj.rows);
+                    }
+                });
+            }
+        });
+    } else {
+        // failure best handled on the server. do redirect here.
+        console.log('not logged in');
+        // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+        res.send(false);
+    }
+});
+
 module.exports = router;

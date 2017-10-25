@@ -108,11 +108,6 @@ myApp.factory('UserService', function ($http, $location) {
       });
     },
 
-    repeatFilter: function(el) {
-      console.log(el);
-      return el.completed == false && el.nowplaying == true;
-    },
-
     setfade: function (target) {
       if (target) {
         return {

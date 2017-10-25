@@ -21,15 +21,14 @@
                     <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
                 </div>
                 <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
-
             </div>
         </section>
     </div>
     <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:null} | filter: {completed:false}'>
-        <section class="section_8bit">
+        <section class="section_8bit editSelect" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
             <div class="wrapper old">
                 <div class="imgContainerOld">
-                    <img ng-src="{{ current.coverart }}" class="imgBW">
+                    <img ng-src="{{ current.coverart }}" class="imgBW" ng-style="uc.userService.setfade(open)">
                 </div>
                 <div class="gameDescCont">
                     <div class="progress">
@@ -44,26 +43,29 @@
 
 
                 </div>
-
+                <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
+                
             </div>
         </section>
     </div>
     <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {completed:true}'>
-        <section class="section_8bit completeArea">
+        <section class="section_8bit completeArea editSelect" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
             <div class="wrapper old">
                 <div class="imgContainerOld">
-                    <img ng-src="{{ current.coverart }}" class="imgComplete">
+                    <img ng-src="{{ current.coverart }}" class="imgComplete" ng-style="uc.userService.setfade(open)">
                 </div>
                 <div class="gameDescCont">
                     <div class="progress">
-                        <div class="progress-bar fullBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
-                            <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
+                        <div class="progress-bar fullBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'100%'}">
+                            <span class="sr-only">100% Complete</span>
                         </div>
                     </div>
                     <span class="gameDesc">{{ current.title }}</span>
                     <img src="../../image/pixel-speech-bubble.png" alt="" class="completeBox">
                     <span class="gameDesc nowPlaying complete">text here</span>
                 </div>
+                <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
+                
             </div>
         </section>
     </div>
