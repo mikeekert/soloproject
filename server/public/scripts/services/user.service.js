@@ -2,9 +2,18 @@ myApp.factory('UserService', function ($http, $location) {
   console.log('UserService Loaded');
 
   var userObject = [{}];
+  
+  getgames = function () {
+    userObject.selectedGame = [];
+    userObject.editGame = [];
+    $http.get('/games/').then(function (response) {
+      userObject.games = response.data;
+    });
+  };
 
   return {
     userObject: userObject,
+    getgames: getgames,
 
     getuser: function () {
       $http.get('/user').then(function (response) {
@@ -27,11 +36,9 @@ myApp.factory('UserService', function ($http, $location) {
       });
     },
 
-    getgames: function () {
-      userObject.selectedGame = [];
-      $http.get('/games/').then(function (response) {
-        userObject.games = response.data;
-      });
+    cancel: function() {
+      userObject.editGame = [];
+      getgames();
     },
 
     apiSearch: function (name) {
@@ -47,12 +54,39 @@ myApp.factory('UserService', function ($http, $location) {
         userObject.results = [];
         userObject.selectedGame[0].time = res.data[0].gameplayMain;
         console.log('selected this one: ', userObject.selectedGame);
-        
+      });
+    },
+
+    editGame: function (target) {
+      userObject.editGame = [target];
+      userObject.games = [];
+      console.log('editing this one: ', userObject.editGame);
+    },
+
+    updateGame: function (target) {
+      userObject.updateGm = {
+        user: target.usergame_id,
+        title: target.title,
+        releasedate: target.releasedate,
+        platform: target.platform,
+        coverart: target.coverart,
+        timetobeat: target.timetobeat,
+        nowplaying: target.nowplaying,
+        completed: target.completed,
+        progress: target.progress
+      };
+      console.log(userObject.updateGm);
+      $http.put('/games/', userObject.updateGm).then(function (response) {
+      }).then(getgames());
+    },
+
+    deleteGame: function (target) {
+      $http.delete('/games/' + target.usergame_id).then(function (response) {
+        getgames();
       });
     },
 
     sendGame: function () {
-      
       userObject.gameObj = {
         user: userObject.userID,
         title: userObject.selectedGame[0].name,
@@ -64,10 +98,6 @@ myApp.factory('UserService', function ($http, $location) {
         completed: false,
         progress: userObject.hoursIn
       };
-
-      console.log('ready to post: ', userObject.gameObj);
-      
-      
       $http.post('/games/', userObject.gameObj).then(function (response) {
         console.log(response);
       }).then(function () {
@@ -76,6 +106,11 @@ myApp.factory('UserService', function ($http, $location) {
         userObject.hoursIn = [];
         $location.path("/user");
       });
+    },
+
+    repeatFilter: function(el) {
+      console.log(el);
+      return el.completed == false && el.nowplaying == true;
     },
 
     setfade: function (target) {

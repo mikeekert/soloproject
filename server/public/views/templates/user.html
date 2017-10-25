@@ -1,18 +1,18 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container" ng-cloak>
 
-    <div class="dataAreaCurrent" ng-repeat='current in uc.userObject.games | filter : {nowplaying:true}'>
-        <section class="section_8bit">
+    <div class="dataAreaCurrent" ng-repeat="current in uc.userObject.games" ng-if="current.nowplaying==true && current.completed==false">
+        <section class="section_8bit editSelect" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
             <div class="wrapper">
                 <div class="imgContainer">
-                    <img ng-src="{{ current.coverart }}" class="currentGameImage">
+                    <img ng-src="{{ current.coverart }}" class="currentGameImage" ng-style="uc.userService.setfade(open)">
                 </div>
                 <div class="gameDescCont">
-                        <div class="progress">
-                                <div class="progress-bar" role="progressbar" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
-                                    <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
-                                </div>
-                            </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
+                            <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
+                        </div>
+                    </div>
                     <span class="nowPlaying">NOW PLAYING:</span>
                     <span class="gameDesc nowPlaying">{{ current.title }}</span>
                     <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
@@ -20,6 +20,7 @@
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
                     <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
                 </div>
+                <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
 
             </div>
         </section>
@@ -31,17 +32,17 @@
                     <img ng-src="{{ current.coverart }}" class="imgBW">
                 </div>
                 <div class="gameDescCont">
-                        <div class="progress">
-                                <div class="progress-bar oldBar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
-                                    <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
-                                </div>
-                            </div>
+                    <div class="progress">
+                        <div class="progress-bar oldBar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
+                            <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
+                        </div>
+                    </div>
                     <span class="gameDesc gdTitle">{{ current.title }}</span>
                     <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
                     <span class="gameDesc">PLATFORM: {{ current.platform }}</span>
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
-                    
-                    
+
+
                 </div>
 
             </div>
@@ -54,16 +55,66 @@
                     <img ng-src="{{ current.coverart }}" class="imgComplete">
                 </div>
                 <div class="gameDescCont">
-                        <div class="progress">
-                                <div class="progress-bar fullBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
-                                    <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
-                                </div>
-                            </div>
+                    <div class="progress">
+                        <div class="progress-bar fullBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
+                            <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
+                        </div>
+                    </div>
                     <span class="gameDesc">{{ current.title }}</span>
                     <img src="../../image/pixel-speech-bubble.png" alt="" class="completeBox">
                     <span class="gameDesc nowPlaying complete">text here</span>
                 </div>
+            </div>
+        </section>
+    </div>
 
+    <div class="addForm" ng-repeat="i in uc.userObject.editGame">
+        <section class="section_8bit">
+            <div class="wrapper">
+                <div class="imgContainer">
+                    <img ng-src="{{ i.coverart }}" class="editImg">
+                </div>
+                <div class="gameDescCont">
+                    <span class="gameDesc nowPlaying">
+                        <span class="searchLabel Left">NAME:</span>
+                        <span class="searchLabelInner">{{i.title}}</span>
+                    </span>
+                    <span class="gameDesc nowPlaying">
+                        <span class="searchLabel Left">PLATFORM:</span>
+                        <span class="searchLabelInner">
+                            <input type="text" class="search innerInput" ng-model="i.platform">
+                        </span>
+                    </span>
+                    <span class="gameDesc nowPlaying">
+                        <span class="searchLabel Left">HOURS PLAYED: </span>
+                        <span class="searchLabelInner">
+                            <input type="text" class="search innerInput" ng-model="i.progress">
+                        </span>
+                    </span>
+                    <span class="gameDesc nowPlaying">
+                        <span class="searchLabel Left">HOURS TO COMPLETE: </span>
+                        <span class="searchLabelInner">
+                            <input type="text" class="search innerInput" ng-model="i.timetobeat">
+                        </span>
+                    </span>
+                    <span class="gameDesc nowPlaying">
+                        <label class="searchLabel Left" for="nowplay">NOW PLAYING: </label>
+                        <span class="searchLabelInner">
+                            <input type="checkbox" class="checkNowPlay" ng-model="i.nowplaying" id="nowplay">
+                        </span>
+                    </span>
+                    <span class="gameDesc nowPlaying">
+                        <label class="searchLabel Left" for="cmplt">COMPLETED: </label>
+                        <span class="searchLabelInner">
+                            <input type="checkbox" class="checkNowPlay" ng-model="i.completed" id="cmplt">
+                        </span>
+                    </span>
+                    <span class="searchLabel nowPlaying saveDel">
+                        <button class="end editSelect editBtn" ng-click="uc.userService.updateGame(i)">SAVE</button>
+                        <button class="end editSelect editBtn" ng-click="uc.userService.deleteGame(i)">DELETE</button>
+                        <button class="end editSelect editBtn" ng-click="uc.userService.cancel()">CANCEL</button>
+                    </span>
+                </div>
             </div>
         </section>
     </div>
