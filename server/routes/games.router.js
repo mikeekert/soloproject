@@ -126,7 +126,7 @@ router.post('/api/:id', function (req, res) {
                 } else {
                     response.body[j].image = client.image({
                         cloudinary_id: response.body[j].cover.cloudinary_id
-                    }, 'cover_small_2x', 'jpg');
+                    }, 'cover_big_2x', 'jpg');
                 }
             }
             response.body.splice(5, response.body.length);
