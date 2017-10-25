@@ -2,7 +2,7 @@
 <div class="container" ng-cloak>
 
     <div class="dataAreaCurrent" ng-repeat="current in uc.userObject.games" ng-if="current.nowplaying==true && current.completed==false">
-        <section class="section_8bit editSelect" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
+        <section class="section_8bit editSelect">
             <div class="wrapper">
                 <div class="imgContainer">
                     <img ng-src="{{ current.coverart }}" class="currentGameImage" ng-style="uc.userService.setfade(open)">
@@ -14,13 +14,13 @@
                         </div>
                     </div>
                     <span class="nowPlaying">NOW PLAYING:</span>
-                    <span class="gameDesc nowPlaying">{{ current.title }}</span>
+                    <span class="gameDesc nowPlaying gdTitle">{{ current.title }}</span>
                     <span class="gameDesc">RELEASE DATE: {{ current.releasedate | limitTo: 4 }}</span>
                     <span class="gameDesc">PLATFORM: {{ current.platform }}</span>
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
                     <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
                 </div>
-                <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
+                <span class="resultText nowPlaying right" ng-click="uc.userService.editGame(current)">&gt;</span>
             </div>
         </section>
     </div>
@@ -28,7 +28,7 @@
         <section class="section_8bit" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
             <div class="wrapper old">
                 <div class="imgContainerOld">
-                    <img ng-src="{{ current.coverart }}" class="imgBW" ng-style="uc.userService.setfade(open)">
+                    <img ng-src="{{ current.coverart }}" class="imgBW">
                 </div>
                 <div class="gameDescCont">
                     <div class="progress">
@@ -46,7 +46,7 @@
 
 
                 </div>
-                <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
+                <span class="resultText nowPlaying right" ng-click="uc.userService.editGame(current)">&gt;</span>
                 
             </div>
         </section>
@@ -55,7 +55,7 @@
         <section class="section_8bit completeArea" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
             <div class="wrapper old">
                 <div class="imgContainerOld">
-                    <img ng-src="{{ current.coverart }}" class="imgComplete" ng-style="uc.userService.setfade(open)">
+                    <img ng-src="{{ current.coverart }}" class="imgComplete">
                 </div>
                 <div class="gameDescCont">
                     <div class="progress">
@@ -67,7 +67,7 @@
                     <img src="../../image/pixel-speech-bubble.png" alt="" class="completeBox">
                     <span class="gameDesc nowPlaying complete">text here</span>
                 </div>
-                <span class="resultText nowPlaying right" ng-show="open">&gt;</span>
+                <span class="resultText nowPlaying right" ng-click="uc.userService.editGame(current)">&gt;</span>
                 
             </div>
         </section>
@@ -79,7 +79,7 @@
                 <div class="imgContainer">
                     <img ng-src="{{ i.coverart }}" class="editImg">
                 </div>
-                <div class="gameDescCont">
+                <div class="gameDescCont gameDescContEdit">
                     <span class="gameDesc nowPlaying">
                         <span class="searchLabel Left">NAME:</span>
                         <span class="searchLabelInner">{{i.title}}</span>

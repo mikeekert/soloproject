@@ -279,8 +279,11 @@ html {
 	}
 	.gdTitle {
 		font-size: 20px;
+		border-bottom: 3px solid white;
+		padding-bottom: 5px;
 		margin-bottom: 10px;
-	}
+		width: 40%;
+		}
  
  
 .gameDescCont {
@@ -288,8 +291,12 @@ html {
 	border-right: 15px white solid;
     padding: 25px;
 	flex:2;
-	margin: 0 15px;
+	margin: 0px;
 	flex-direction: column; }
+
+.gameDescContEdit {
+	border:0;
+}
  
  
 .gameResult {
@@ -557,7 +564,7 @@ li { float: left; }
  
 .resultsBlock { width: 25%; }
  
-	.resultsBlock:hover, .editSelect:hover {
+	.resultsBlock:hover, .right:hover {
 		background-color: rgba(38, 37, 36, 0.72);
 		-webkit-transition: background-color 200ms linear;
 		-ms-transition: background-color 200ms linear;
@@ -567,10 +574,17 @@ li { float: left; }
 	font-size: 45px;
 	/* -webkit-animation: rightarrow 0.6s infinite alternate ease-in-out;
 	animation: rightarrow 0.6s infinite alternate ease-in-out; */
-	margin: 0;
 	visibility: visible;
-    /* height: 100%; */
-    align-self: stretch;
+	padding:0 10px;
+	align-self: stretch;
+	cursor: pointer;
+	margin: 0;
+    background-color: rgba(149, 149, 149, 0.27);
+}
+
+
+.wrapper {
+	cursor: auto;
 }
 
 .saveDel { 
@@ -767,7 +781,10 @@ ul {
  
 	.wrapper.wrapMenu.nowPlaying { font-size: 20px; }
  
-		.wrapper.wrapMenu.nowPlaying.resultswrap { min-height: 500px; }
+		.wrapper.wrapMenu.nowPlaying.resultswrap { 
+			min-height: 500px; 
+			cursor: pointer;
+		}
  
 		.wrapper.wrapMenu.nowPlaying>li>a {
 			width: 225px;
