@@ -116,7 +116,7 @@ router.post('/api/:id', function (req, res) {
         }).then(response => {
             j = response.body.length;
             while (j--) {
-                console.log('#'+j,': ',response.body[j].name);
+                console.log('#' + j, ': ', response.body[j].name);
                 // for (var j = 0; j < response.body.length; j++) {
                 if (response.body[j].hasOwnProperty('cover') === false) {
                     console.log('removing game, no image:', response.body[j].name);
@@ -142,12 +142,13 @@ router.post('/api/:id', function (req, res) {
                 if (newArray[i].platforms == undefined) {
                     console.log('undefined: ', newArray[i].name);
                 } else {
-                newArray[i].system = _.findWhere(datatable, {
-                    id: newArray[i].platforms[0]
-                });
-            }
+                    newArray[i].system = _.findWhere(datatable, {
+                        id: newArray[i].platforms[0]
+                    });
+                }
                 console.log('name here: ', newArray[i].system);
             }
+            
             res.send(newArray);
         }).catch(error => {
             console.log('error here:', error);

@@ -52,10 +52,8 @@ myApp.factory('UserService', function ($http, $location) {
       setTimeout(function () {
         $http.post('/games/api/' + name).then(function (response) {
           console.log('response from api: ', response);
-          
           if (response.data == false) {
             userObject.loading = false;
-            
           } else {
             userObject.loading = false;
             userObject.results = response.data;
@@ -69,6 +67,9 @@ myApp.factory('UserService', function ($http, $location) {
         userObject.selectedGame = [target];
         userObject.results = [];
         userObject.selectedGame[0].time = Math.floor(res.data[0].gameplayMain);
+        if (userObject.selectedGame[0].hasOwnProperty('release_dates') == false) {
+          userObject.selectedGame[0].release_dates.human = '2017';
+        }
         console.log('selected this one: ', userObject.selectedGame);
       });
     },
@@ -99,7 +100,6 @@ myApp.factory('UserService', function ($http, $location) {
       };
       console.log(userObject.updateGm);
       $http.put('/games/', userObject.updateGm).then(function (response) {}).then(getgames());
-
     },
 
     calcPercent: function (target) {
@@ -131,10 +131,11 @@ myApp.factory('UserService', function ($http, $location) {
         platform: userObject.selectedGame[0].system.name,
         coverart: userObject.selectedGame[0].image,
         timetobeat: userObject.selectedGame[0].time,
-        nowplaying: userObject.nowplaying,
+        nowplaying: userObject.selectedGame[0].nowplaying,
         completed: false,
-        progress: userObject.hoursIn
+        progress: userObject.selectedGame[0].progress
       };
+
       if (userObject.gameObj.nowplaying == null) {
         userObject.gameObj.nowplaying = false;
       }
@@ -142,9 +143,14 @@ myApp.factory('UserService', function ($http, $location) {
       if (userObject.gameObj.progress == null) {
         userObject.gameObj.progress = 0;
       }
-      $http.post('/games/', userObject.gameObj).then(function (response) {
-        console.log(response);
-      }).then(function () {
+
+      if (userObject.gameObj.progress == userObject.gameObj.timetobeat) {
+        userObject.gameObj.completed = true;
+      }
+
+      console.log('output:', userObject.gameObj);
+
+      $http.post('/games/', userObject.gameObj).then(function (response) {}).then(function () {
         userObject.selectedGame = [];
         userObject.nowplaying = [];
         userObject.hoursIn = [];

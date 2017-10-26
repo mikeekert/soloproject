@@ -718,5 +718,15 @@ module.exports = [{
     {
         "id": 112,
         "name": "Microcomputer"
+    },
+    {
+        "id": 130,
+        "name": "Nintendo Switch",
+        "logo": {
+          "url": "//images.igdb.com/igdb/image/upload/t_thumb/zj5x8hozy4fatoqk37nn.jpg",
+          "cloudinary_id": "zj5x8hozy4fatoqk37nn",
+          "width": 413,
+          "height": 413
+        }
     }
 ];

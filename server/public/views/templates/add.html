@@ -66,7 +66,7 @@
         <span class="gameDesc nowPlaying">
           <span class="searchLabel Left">HOURS PLAYED: </span>
           <span class="searchLabelInner">
-            <input type="text" class="search innerInput" ng-model="ac.userObject.hoursIn">
+            <input type="text" class="search innerInput" ng-model="i.progress">
           </span>
         </span>
         <span class="gameDesc nowPlaying">
@@ -79,11 +79,11 @@
           <span class="searchLabel Left" for="checkbox">NOW PLAYING: </span>
           <span class="searchLabelInner">
             <label for="checkbox">[ ]</label>
-            <input type="checkbox" class="checkNowPlay" ng-model="ac.userObject.nowplaying" id="checkbox">
+            <input type="checkbox" class="checkNowPlay" ng-model="i.nowplaying" id="checkbox">
           </span>
         </span>
         <span class="searchLabel">
-          <button class="end arrowLink loading" ng-click="ac.userService.sendGame()">ENTER</button>
+          <button class="end arrowLink" ng-click="ac.userService.sendGame(i)">ENTER</button>
         </span>
       </div>
     </div>

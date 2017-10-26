@@ -21,26 +21,16 @@
     display: block!important;
 }
 
-
-/* @keyframes blink {
-    from,
-    to {
-        color: transparent;
+@keyframes bubble {
+    0% {
+        -webkit-transform: translateY(0.6em);
+        opacity: 0.8
     }
-    50% {
-        color: black;
+    100% {
+        -webkit-transform: translateY(0.3em);
+        opacity: 0.9
     }
 }
-
-@-moz-keyframes blink {
-    from,
-    to {
-        color: transparent;
-    }
-    50% {
-        color: black;
-    }
-} */
 
 
 @-webkit-keyframes uparrow {
@@ -140,6 +130,8 @@
 	}
   }
 
+  
+
 textarea,
 input.text,
 input[type="text"],
@@ -230,9 +222,9 @@ html {
 	-ms-transform: scale(0.7);
 	-webkit-transform: scale(0.7);
 	height: 180px;
-	left: 5%;
-	position: absolute;
-	top: -35%;
+	left: -225px;
+	position: relative;
+	top: -70%;
 	transform: scale(0.7);
 	width: 315px; }
  
@@ -397,7 +389,6 @@ img {
  
  
 .imgComplete {
-	height: 100%;
 	max-width: 150px; }
  
  
@@ -407,6 +398,10 @@ img {
 	max-width: 200px;
 	flex:1;
 	padding: 25px;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
 }
  
  
@@ -528,7 +523,8 @@ li { float: left; }
     font-size: 40px;
     margin: 50px auto;
     font-family: "press_start_kregular", serif;
-    text-shadow: 3px 3px rgba(0, 0, 0, .6);
+	text-shadow: 3px 3px rgba(0, 0, 0, .6);
+	padding:5px;
 }
  
 .pressStart {
