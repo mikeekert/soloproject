@@ -118,7 +118,7 @@ myApp.factory('UserService', function ($http, $location) {
         releasedate: userObject.selectedGame[0].release_dates[0].human,
         platform: userObject.selectedGame[0].system.name,
         coverart: userObject.selectedGame[0].image,
-        timetobeat: 20,
+        timetobeat: userObject.selectedGame[0].time,
         nowplaying: userObject.nowplaying,
         completed: false,
         progress: userObject.hoursIn
@@ -134,6 +134,18 @@ myApp.factory('UserService', function ($http, $location) {
         userObject.hoursIn = [];
         $location.path("/user");
       });
+    },
+
+    highlight: function (target) {
+      if (target) {
+        return {
+          opacity: '.5'
+        };
+      } else {
+        return {
+          opacity: '1'
+        };
+      }
     },
 
     setfade: function (target) {

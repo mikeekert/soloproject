@@ -131,7 +131,6 @@ a {
  
 .arrowLink:hover { text-decoration: none; }
  
-	.arrowLink:hover:before { display: block; }
  
  
 .back {
@@ -180,7 +179,7 @@ html {
 	height: 180px;
 	left: 5%;
 	position: absolute;
-	top: -20%;
+	top: -35%;
 	transform: scale(0.7);
 	width: 315px; }
  
@@ -220,26 +219,15 @@ html {
 
 	
 
-.editArrow::before {
-	content: '>';
-	height: 0px;
-	width: 0;
-	visibility: hidden;
-	position: initial;
-	margin-right:15px;
-}
 
-.editArrow:hover { text-decoration: none; }
-
-	.editArrow:hover:before { 
-		visibility: visible; 
-	}
 
 .editImg {
 	margin: 0 auto;
     width: 100%;
     max-width: 258px;
  }
+
+
 
 .end {
 	color: #fff;
@@ -259,7 +247,11 @@ html {
 		outline-color: transparent;
 		outline-style: none; }
 
- 
+		.editBtn {
+			width: auto;
+			font-size: 1.6vw;
+		}
+		
 #entryForm { margin-top: 14px; }
  
  
@@ -269,7 +261,16 @@ html {
 .flexResult {
 	width: 100%;
 	display: flex; }
- 
+
+ .editCard {
+	margin: 0 auto;
+    position: relative;
+    /* display: block; */
+    z-index: 55;
+    left: 35%;
+	top: 60px!important;
+	text-align: center;
+ }
  
 .gameDesc { 
 	margin: 2px 0; 
@@ -285,7 +286,13 @@ html {
 		width: 40%;
 		}
  
- 
+ .easter {
+	max-width: 25px;
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+ }
+
 .gameDescCont {
 	display: flex;
 	border-right: 15px white solid;
@@ -572,8 +579,6 @@ li { float: left; }
  
 .right {
 	font-size: 45px;
-	/* -webkit-animation: rightarrow 0.6s infinite alternate ease-in-out;
-	animation: rightarrow 0.6s infinite alternate ease-in-out; */
 	visibility: visible;
 	padding:0 10px;
 	align-self: stretch;
@@ -948,7 +953,25 @@ and (device-height : 812px)  {
 }
 
 
-@media (min-width: 1300px) {
+@media (min-width: 1113px) {
+
+	.arrowLink:hover:before { display: block; }
+	
+
+	.editArrow::before {
+		content: '>';
+		height: 0px;
+		width: 0;
+		visibility: hidden;
+		position: initial;
+		margin-right:15px;
+	}
+	
+	.editArrow:hover { text-decoration: none; }
+	
+		.editArrow:hover:before { 
+			visibility: visible; 
+		}
 
 	.section_8bit.headMenu {
 		top: 5px;
@@ -958,6 +981,7 @@ and (device-height : 812px)  {
 		flex: 3.3;
 	}
 
+	.arrowLink:hover:before { display: block; }
 
 	.gameDesc {
 		font-size: 1vw;

@@ -1,6 +1,5 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container" ng-cloak>
-
     <div class="dataAreaCurrent" ng-repeat="current in uc.userObject.games" ng-if="current.nowplaying==true && current.completed==false">
         <section class="section_8bit editSelect">
             <div class="wrapper">
@@ -25,15 +24,14 @@
         </section>
     </div>
     <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:false} | filter: {completed:false}'>
-        <section class="section_8bit" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
+        <section class="section_8bit">
             <div class="wrapper old">
                 <div class="imgContainerOld">
                     <img ng-src="{{ current.coverart }}" class="imgBW">
                 </div>
                 <div class="gameDescCont">
                     <div class="progress">
-                        <div class="progress-bar oldBar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
-                            
+                        <div class="progress-bar oldBar" role="progressbar" ng-style="{'width':'{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}%'}">
                             <span class="sr-only">{{ ((current.progress / current.timetobeat)*100).toFixed(0) }}% Complete</span>
                         </div>
                     </div>
@@ -42,17 +40,13 @@
                     <span class="gameDesc">PLATFORM: {{ current.platform }}</span>
                     <span class="gameDesc">HOURS PLAYED: {{ current.progress }}</span>
                     <span class="gameDesc">HOURS TO COMPLETE: {{ current.timetobeat }}</span>
-                    
-
-
                 </div>
                 <span class="resultText nowPlaying right" ng-click="uc.userService.editGame(current)">&gt;</span>
-                
             </div>
         </section>
     </div>
     <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {completed:true}'>
-        <section class="section_8bit completeArea" ng-mouseover="open = true" ng-mouseleave="open = false" ng-click="uc.userService.editGame(current)">
+        <section class="section_8bit completeArea">
             <div class="wrapper old">
                 <div class="imgContainerOld">
                     <img ng-src="{{ current.coverart }}" class="imgComplete">
@@ -65,15 +59,20 @@
                     </div>
                     <span class="gameDesc">{{ current.title }}</span>
                     <img src="../../image/pixel-speech-bubble.png" alt="" class="completeBox">
-                    <span class="gameDesc nowPlaying complete">text here</span>
                 </div>
                 <span class="resultText nowPlaying right" ng-click="uc.userService.editGame(current)">&gt;</span>
-                
             </div>
         </section>
     </div>
 
     <div class="addForm" ng-repeat="i in uc.userObject.editGame">
+            <div class="titlecard">
+                    <section class="section_8bit headMenu editCard">
+                        <div class="wrapper wrapMenu nowPlaying">
+                            Edit
+                        </div>
+                    </section>
+                </div>
         <section class="section_8bit">
             <div class="wrapper">
                 <div class="imgContainer">
@@ -109,10 +108,10 @@
                         </span>
                     </span>
                     <span class="gameDesc nowPlaying">
-                        <label class="searchLabel Left" for="cmplt">COMPLETED: </label>
-                        <span class="searchLabelInner">
+                        <div class="searchLabelInner"><span>COMPLETED:</span>
+                            <label class="searchLabel Left" for="cmplt"></label>
                             <input type="checkbox" class="checkNowPlay" ng-model="i.completed" id="cmplt">
-                        </span>
+                        </div>
                     </span>
                     <span class="searchLabel nowPlaying saveDel">
                         <button class="end editArrow editBtn" ng-click="uc.userService.updateGame(i)">SAVE</button>

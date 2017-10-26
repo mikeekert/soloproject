@@ -1,13 +1,13 @@
 <div ng-include="'views/partials/nav.html'" ng-controller="UserController as uc"></div>
 <div class="container" ng-init="ac.clamp()">
   <div class="centerThis">
-    <section class="section_8bit addFormTitle">
+    <!-- <section class="section_8bit addFormTitle">
       <div class="wrapper wrapMenu nowPlaying">
         <p class="nowPlaying">
           Add Game:
         </p>
       </div>
-    </section>
+    </section> -->
   </div>
   <div class="centerThis form">
     <section class="section_8bit addForm">
@@ -21,7 +21,7 @@
     </section>
   </div>
   <div class="flexResult">
-    <div class="results" ng-repeat="result in ac.userObject.results track by $index" ng-mouseover="open = true" ng-mouseleave="open = false"
+    <div class="results" ng-repeat="result in ac.userObject.results track by $index" 
       ng-click="ac.userService.selectGame(result)">
       <section class="section_8bit addForm resultsBlock">
         <div class="wrapper wrapMenu nowPlaying resultswrap">
