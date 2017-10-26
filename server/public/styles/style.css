@@ -87,6 +87,59 @@
     }
 }
 
+.blinking-cursor {
+	-webkit-animation: .75s blink step-end infinite;
+	-moz-animation: .75s blink step-end infinite;
+	-ms-animation: .75s blink step-end infinite;
+	-o-animation: .75s blink step-end infinite;
+	animation: .75s blink step-end infinite;
+  }
+  
+  @keyframes blink {
+	from, to {
+	  visibility: hidden;
+	}
+	50% {
+		visibility: visible;
+	}
+  }
+  
+  @-moz-keyframes blink {
+	from, to {
+	  visibility: hidden;
+	}
+	50% {
+		visibility: visible;
+	}
+  }
+  
+  @-webkit-keyframes blink {
+	from, to {
+	  visibility: hidden;
+	}
+	50% {
+		visibility: visible;
+	}
+  }
+  
+  @-ms-keyframes blink {
+	from, to {
+	  visibility: hidden;
+	}
+	50% {
+		visibility: visible;
+	}
+  }
+  
+  @-o-keyframes blink {
+	from, to {
+	  visibility: hidden;
+	}
+	50% {
+		visibility: visible;
+	}
+  }
+
 textarea,
 input.text,
 input[type="text"],
@@ -469,6 +522,14 @@ li { float: left; }
  
 .platform { height: 45px; }
  
+.loading {
+	color: #FFF;
+    width: 400px;
+    font-size: 40px;
+    margin: 50px auto;
+    font-family: "press_start_kregular", serif;
+    text-shadow: 3px 3px rgba(0, 0, 0, .6);
+}
  
 .pressStart {
 	color: #fff;

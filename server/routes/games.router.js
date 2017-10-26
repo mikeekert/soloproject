@@ -116,8 +116,10 @@ router.post('/api/:id', function (req, res) {
         }).then(response => {
             j = response.body.length;
             while (j--) {
+                console.log('#'+j,': ',response.body[j].name);
                 // for (var j = 0; j < response.body.length; j++) {
                 if (response.body[j].hasOwnProperty('cover') === false) {
+                    console.log('removing game, no image:', response.body[j].name);
                     response.body.splice(j, 1);
                 } else if (response.body[j].name.includes('Collector')) {
                     response.body.splice(j, 1);
@@ -130,35 +132,45 @@ router.post('/api/:id', function (req, res) {
                 }
             }
             response.body.splice(5, response.body.length);
+            if (response.body.length == 0) {
+                res.send(false);
+            }
             var newArray = response.body;
 
             for (var i = 0; i < newArray.length; i++) {
                 console.log('id here: ', newArray[i].platforms);
-                newArray[i].system = _.findWhere(datatable, {id: newArray[i].platforms[0]});
-                console.log('name here: ',newArray[i].system);
+                if (newArray[i].platforms == undefined) {
+                    console.log('undefined: ', newArray[i].name);
+                } else {
+                newArray[i].system = _.findWhere(datatable, {
+                    id: newArray[i].platforms[0]
+                });
             }
-
+                console.log('name here: ', newArray[i].system);
+            }
             res.send(newArray);
         }).catch(error => {
-            throw error;
+            console.log('error here:', error);
+            res.send(false);
+            // throw error;
         });
         // send back user object from database
     } else {
         // failure best handled on the server. do redirect here.
         console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
-        res.send(false);
+        res.sendStatus(403);
     }
 });
 
-router.put('/', function(req,res) {
+router.put('/', function (req, res) {
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
                 console.log(conErr);
                 res.sendStatus(500);
             } else {
-                console.log('POST data',req.body);
+                console.log('POST data', req.body);
                 const dbId = [req.body.progress, req.body.completed, req.body.timetobeat, req.body.platform, req.body.nowplaying, req.body.user];
                 const queryGet = "UPDATE user_game SET progress=$1, completed=$2, timetobeat=$3, platform=$4, nowplaying=$5 WHERE usergame_id = $6 ";
                 client.query(queryGet, dbId, function (queryErr, resultObj) {
@@ -180,14 +192,14 @@ router.put('/', function(req,res) {
     }
 });
 
-router.delete('/:id', function(req,res) {
+router.delete('/:id', function (req, res) {
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
                 console.log(conErr);
                 res.sendStatus(500);
             } else {
-                console.log('DELETE data',req.params.id);
+                console.log('DELETE data', req.params.id);
                 const dbId = [req.params.id];
                 const queryGet = "DELETE FROM user_game WHERE usergame_id = $1";
                 client.query(queryGet, dbId, function (queryErr, resultObj) {

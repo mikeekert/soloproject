@@ -1,18 +1,17 @@
 myApp.factory('UserService', function ($http, $location) {
-  console.log('UserService Loaded');
 
   var userObject = [{}];
-  
+
   getgames = function () {
     userObject.selectedGame = [];
     userObject.editGame = [];
     $http.get('/games/').then(function (response) {
       userObject.games = response.data;
-        for (var i = 0; i < userObject.games.length; i++) {
-          if(userObject.games[i].progress > userObject.games[i].timetobeat) {
-            userObject.games[i].progress = userObject.games[i].timetobeat;
-          }          
+      for (var i = 0; i < userObject.games.length; i++) {
+        if (userObject.games[i].progress > userObject.games[i].timetobeat) {
+          userObject.games[i].progress = userObject.games[i].timetobeat;
         }
+      }
     });
   };
 
@@ -41,24 +40,35 @@ myApp.factory('UserService', function ($http, $location) {
       });
     },
 
-    cancel: function() {
+    cancel: function () {
       userObject.editGame = [];
       getgames();
     },
 
     apiSearch: function (name) {
       userObject.selectedGame = [];
-      $http.post('/games/api/' + name).then(function (response) {
-        userObject.results = response.data;
-        console.log('api call array (userObject.results): ',userObject.results);
-      });      
+      userObject.results = [];
+      userObject.loading = true;
+      setTimeout(function () {
+        $http.post('/games/api/' + name).then(function (response) {
+          console.log('response from api: ', response);
+          
+          if (response.data == false) {
+            userObject.loading = false;
+            
+          } else {
+            userObject.loading = false;
+            userObject.results = response.data;
+          }
+        });
+      }, 1500);
     },
 
     selectGame: function (target) {
       $http.post('/games/hours/' + target.name).then(function (res) {
         userObject.selectedGame = [target];
         userObject.results = [];
-        userObject.selectedGame[0].time = res.data[0].gameplayMain;
+        userObject.selectedGame[0].time = Math.floor(res.data[0].gameplayMain);
         console.log('selected this one: ', userObject.selectedGame);
       });
     },
@@ -73,6 +83,9 @@ myApp.factory('UserService', function ($http, $location) {
       if (target.nowplaying == null) {
         target.nowplaying = false;
       }
+      if (target.progress == target.timetobeat) {
+        target.completed = true;
+      }
       userObject.updateGm = {
         user: target.usergame_id,
         title: target.title,
@@ -85,23 +98,22 @@ myApp.factory('UserService', function ($http, $location) {
         progress: target.progress
       };
       console.log(userObject.updateGm);
-      $http.put('/games/', userObject.updateGm).then(function (response) {
-      }).then(getgames());
-      
+      $http.put('/games/', userObject.updateGm).then(function (response) {}).then(getgames());
+
     },
 
-    calcPercent: function(target) {
-      var width =  parseInt( ( (target.progress / target.timetobeat)*100).toFixed(0) );
+    calcPercent: function (target) {
+      var width = parseInt(((target.progress / target.timetobeat) * 100).toFixed(0));
       console.log('width:', width);
       if (width > 100) {
-        width=100;
+        width = 100;
         console.log('width adj:', width);
-        
+
       }
-      var strCss = '{"width":'+width+'%}';
+      var strCss = '{"width":' + width + '%}';
       console.log(strCss);
-      
-      
+
+
       return strCss;
     },
 
@@ -125,6 +137,10 @@ myApp.factory('UserService', function ($http, $location) {
       };
       if (userObject.gameObj.nowplaying == null) {
         userObject.gameObj.nowplaying = false;
+      }
+
+      if (userObject.gameObj.progress == null) {
+        userObject.gameObj.progress = 0;
       }
       $http.post('/games/', userObject.gameObj).then(function (response) {
         console.log(response);

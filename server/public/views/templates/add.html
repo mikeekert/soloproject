@@ -21,8 +21,7 @@
     </section>
   </div>
   <div class="flexResult">
-    <div class="results" ng-repeat="result in ac.userObject.results track by $index" 
-      ng-click="ac.userService.selectGame(result)">
+    <div class="results" ng-repeat="result in ac.userObject.results track by $index" ng-click="ac.userService.selectGame(result)">
       <section class="section_8bit addForm resultsBlock">
         <div class="wrapper wrapMenu nowPlaying resultswrap">
           <span class="resultText name">
@@ -41,6 +40,12 @@
     </div>
   </div>
 </div>
+
+<div class="loading" ng-if="ac.userObject.loading">
+    <span>Loading</span>
+    <span class="blinking-cursor loading">...</span>
+</div>
+
 <div class="addForm" ng-repeat="i in ac.userObject.selectedGame">
   <section class="section_8bit">
     <div class="wrapper">
@@ -73,11 +78,12 @@
         <span class="gameDesc nowPlaying">
           <span class="searchLabel Left" for="checkbox">NOW PLAYING: </span>
           <span class="searchLabelInner">
+            <label for="checkbox">[ ]</label>
             <input type="checkbox" class="checkNowPlay" ng-model="ac.userObject.nowplaying" id="checkbox">
           </span>
         </span>
         <span class="searchLabel">
-          <button class="end arrowLink" ng-click="ac.userService.sendGame()">ENTER</button>
+          <button class="end arrowLink loading" ng-click="ac.userService.sendGame()">ENTER</button>
         </span>
       </div>
     </div>

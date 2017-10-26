@@ -1,5 +1,4 @@
 myApp.controller('LoginController', function($http, $location, UserService) {
-    console.log('LoginController created');
     var vm = this;
 
     vm.userService = UserService;
@@ -16,7 +15,6 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     vm.alpha.push('del');
 
     vm.userService.letter = function(letter){
-      console.log(letter);
       if (vm.user.username.length < 10 || letter == 'del') {
         if (letter == 'del') {
           vm.user.username = vm.user.username.slice(0, -1);
