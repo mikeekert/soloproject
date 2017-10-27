@@ -117,7 +117,6 @@ router.post('/api/:id', function (req, res) {
             j = response.body.length;
             while (j--) {
                 console.log('#' + j, ': ', response.body[j].name);
-                // for (var j = 0; j < response.body.length; j++) {
                 if (response.body[j].hasOwnProperty('cover') === false) {
                     console.log('removing game, no image:', response.body[j].name);
                     response.body.splice(j, 1);

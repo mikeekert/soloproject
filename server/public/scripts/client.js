@@ -31,6 +31,9 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    }).when('/about', {
+      templateUrl: '/views/templates/about.html',
+      controller: 'AboutController as tc'
     })
     .otherwise({
       redirectTo: 'home'

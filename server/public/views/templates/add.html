@@ -12,11 +12,11 @@
   <div class="centerThis form">
     <section class="section_8bit addForm">
       <div class="wrapper wrapMenu nowPlaying">
-        <p class="nowPlaying">
-          <span class="searchLabel">Search:</span>
+          <form class="nowPlaying">
+          <span class="searchLabel">SEARCH:</span>
           <input type="text" class="search" ng-model="ac.searchIn">
-          <button class="end arrowLink" ng-click="ac.userService.apiSearch(ac.searchIn)">END</button>
-        </p>
+          <button class="end arrowLink" ng-click="ac.userService.apiSearch(ac.searchIn)">ENTER</button>
+        </form>
       </div>
     </section>
   </div>
@@ -76,11 +76,12 @@
           </span>
         </span>
         <span class="gameDesc nowPlaying">
-          <span class="searchLabel Left" for="checkbox">NOW PLAYING: </span>
-          <span class="searchLabelInner">
-            <label for="checkbox">[ ]</label>
-            <input type="checkbox" class="checkNowPlay" ng-model="i.nowplaying" id="checkbox">
+          <span class="searchLabelInner" id="customCheckbox">
+              <span class="searchLabel Left">NOW PLAYING:</Span>
+              <input type="checkbox" class="checkNowPlay" ng-model="i.nowplaying" id="nowplay">
+              <label class="searchLabel Left" for="nowplay"></label>
           </span>
+      </span>
         </span>
         <span class="searchLabel">
           <button class="end arrowLink" ng-click="ac.userService.sendGame(i)">ENTER</button>
