@@ -45,10 +45,9 @@ myApp.factory('UserService', function ($http, $location) {
       console.log('konami loaded');
       cheet('↑ ↑ ↓ ↓ ← → ← → b a', {
         next: function (str, key, num, seq) {
-          
           console.log('key pressed: ' + key);
           userObject.sequence.push(seq[num]);
-          console.log('sequence:', userObject.sequence);
+          console.log('userObject.sequence:', userObject.sequence);
         },
       
         fail: function () {
