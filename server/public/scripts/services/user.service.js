@@ -1,7 +1,8 @@
 myApp.factory('UserService', function ($http, $location) {
 
   var userObject = [{}];
-
+  userObject.sequence=[];
+  
   getgames = function () {
     userObject.selectedGame = [];
     userObject.editGame = [];
@@ -37,6 +38,27 @@ myApp.factory('UserService', function ($http, $location) {
     logout: function () {
       $http.get('/user/logout').then(function (response) {
         $location.path("/home");
+      });
+    },
+
+    konami: function () {
+      console.log('konami loaded');
+      cheet('↑ ↑ ↓ ↓ ← → ← → b a', {
+        next: function (str, key, num, seq) {
+          
+          console.log('key pressed: ' + key);
+          userObject.sequence.push(seq[num]);
+          console.log('sequence:', userObject.sequence);
+        },
+      
+        fail: function () {
+          console.log('sequence failed');
+          userObject.sequence = [];          
+        },
+      
+        done: function () {
+          console.log('+30 lives ;)');
+        }
       });
     },
 
