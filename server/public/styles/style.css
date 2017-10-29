@@ -410,6 +410,10 @@ html {
     margin-bottom: 25px;
 }
 
+.thanksCont {
+    width: 100%;
+}
+
 .thanks > img {
     width: 100%;
 }

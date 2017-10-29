@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container" ng-cloak>
-    <div class="dataAreaCurrent" ng-repeat="current in uc.userObject.games" ng-if="current.nowplaying==true && current.completed==false">
+    <div class="dataAreaCurrent" ng-repeat="current in uc.userObject.games | orderBy : (((current.progress / current.timetobeat)*100).toFixed(0)) : reverse=true" ng-if="current.nowplaying==true && current.completed==false">
         <section class="section_8bit editSelect">
             <div class="wrapper">
                 <div class="imgContainer">
@@ -23,7 +23,7 @@
             </div>
         </section>
     </div>
-    <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:false} | filter: {completed:false}'>
+    <div class="dataArea" ng-repeat='current in uc.userObject.games | filter : {nowplaying:false} | filter: {completed:false} | orderBy : (((current.progress / current.timetobeat)*100).toFixed(0)) : reverse=true'>
         <section class="section_8bit">
             <div class="wrapper old">
                 <div class="imgContainerOld">
