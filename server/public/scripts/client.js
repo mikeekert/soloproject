@@ -33,12 +33,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       }
     }).when('/about', {
       templateUrl: '/views/templates/about.html',
-      controller: 'AboutController as about',
-      resolve: {
-        getuser : function(UserService){
-          return UserService.konami();
-        }
-      }
+      controller: 'AboutController as tc',
     })
     .otherwise({
       redirectTo: 'home'

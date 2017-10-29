@@ -1,7 +1,6 @@
 <div class="aboutWrap">
-        <section class="section_8bit">
+        <section class="section_8bit" ng-if="tc.mainLoad">
                 <div class="wrapper wrapMenu nowPlaying">
-
                         <div class="container">
                                 <div class="thanks">
                                         <h1 class="thanksheader">THANKS!</h1>
@@ -17,13 +16,25 @@
                                         <span class="thanksheader">APIs:</span>
                                         <span class="thanks">IGDB.com & HowLongToBeat.com</span>
                                 </div>
-                        </div>
-                        <div class=container>
-                                TEXT HERE
-                                <div ng-repeat="i in about.userObject.sequence">
-                                        repeat {{ i }} blah
+                                <div class="thanks codes">
+                                        <span ng-repeat="letter in tc.sequence track by $index">
+                                                {{ letter }}
+                                        </span>
                                 </div>
                         </div>
                 </div>
+
         </section>
-</div>
+
+        <section class="section_8bit" ng-if="tc.konamiStatus">
+                <div class="wrapper wrapMenu nowPlaying">
+                                <img ng-src="../../image/konami.jpg" class="easterImg">
+        </section>
+
+
+        <div class="thanks codes" ng-if="tc.loading">
+                <span>Loading</span>
+                <span class="blinking-cursor loading">...</span>
+        </div>
+
+        </div>
