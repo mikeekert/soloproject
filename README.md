@@ -6,6 +6,8 @@ The application allows for a user to create their own account, add/edit/delete g
 
 Visual themes were inspired from the Nintendo/8-Bit era of gaming, heavily using pixel based menus, fonts, and assets.
 
+See Demo: http://questlog.mikeekert.com/#/home
+
 ## Built With
 
 - postgreSQL
@@ -30,7 +32,7 @@ Link to software that is required to install the app (e.g. node).
 
 Steps to get the development environment running;
 
-Create SQL table in local db:
+Create postgreSQL table in local db:
 
 ```sql
 CREATE TABLE user_game (
@@ -65,6 +67,8 @@ ALTER TABLE ONLY users
 ALTER TABLE ONLY user_game
     ADD CONSTRAINT user_game_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 ```
+
+Run ``` npm install ``` to grab project dependancies.
 
 ### Completed Features
 
