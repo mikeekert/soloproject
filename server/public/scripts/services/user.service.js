@@ -30,7 +30,7 @@ myApp.factory('UserService', function ($http, $location) {
           $location.path("/home");
         }
       }, function (response) {
-        console.log('UserService -- getuser -- failure: ', response);
+        // // console.log('UserService -- getuser -- failure: ', response);
         $location.path("/home");
       });
     },
@@ -52,7 +52,7 @@ myApp.factory('UserService', function ($http, $location) {
       userObject.loading = true;
       setTimeout(function () {
         $http.post('/games/api/' + name).then(function (response) {
-          console.log('response from api: ', response);
+          // // console.log('response from api: ', response);
           if (response.data == false) {
             userObject.loading = false;
           } else {
@@ -71,14 +71,14 @@ myApp.factory('UserService', function ($http, $location) {
         if (userObject.selectedGame[0].hasOwnProperty('release_dates') == false) {
           userObject.selectedGame[0].release_dates.human = '2017';
         }
-        console.log('selected this one: ', userObject.selectedGame);
+        // // console.log('selected this one: ', userObject.selectedGame);
       });
     },
 
     editGame: function (target) {
       userObject.editGame = [target];
       userObject.games = [];
-      console.log('editing this one: ', userObject.editGame);
+      // // console.log('editing this one: ', userObject.editGame);
     },
 
     updateGame: function (target) {
@@ -99,20 +99,20 @@ myApp.factory('UserService', function ($http, $location) {
         completed: target.completed,
         progress: target.progress
       };
-      console.log(userObject.updateGm);
+      // // console.log(userObject.updateGm);
       $http.put('/games/', userObject.updateGm).then(function (response) {}).then(getgames());
     },
 
     calcPercent: function (target) {
       var width = parseInt(((target.progress / target.timetobeat) * 100).toFixed(0));
-      console.log('width:', width);
+      // // console.log('width:', width);
       if (width > 100) {
         width = 100;
-        console.log('width adj:', width);
+        // // console.log('width adj:', width);
 
       }
       var strCss = '{"width":' + width + '%}';
-      console.log(strCss);
+      // // console.log(strCss);
 
 
       return strCss;
@@ -149,7 +149,7 @@ myApp.factory('UserService', function ($http, $location) {
         userObject.gameObj.completed = true;
       }
 
-      console.log('output:', userObject.gameObj);
+      // // console.log('output:', userObject.gameObj);
 
       $http.post('/games/', userObject.gameObj).then(function (response) {}).then(function () {
         userObject.selectedGame = [];

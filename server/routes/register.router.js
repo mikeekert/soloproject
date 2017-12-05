@@ -6,24 +6,24 @@ var encryptLib = require('../modules/encryption');
 
 // Handles request for HTML file
 router.get('/', function(req, res, next) {
-  console.log('get /register route');
+  // console.log('get /register route');
   res.sendFile(path.resolve(__dirname, '../public/views/templates/register.html'));
 });
 
 // Handles POST request with new user data
 // Handles POST request with new user data
 router.post('/', function(req, res, next) {
-  console.log('from POST on front end: ', req.body);
+  // console.log('from POST on front end: ', req.body);
   var saveUser = {
     username: req.body.username,
     password: encryptLib.encryptPassword(req.body.password),
     id: req.body.id
   };
-  console.log('new user:', saveUser);
+  // console.log('new user:', saveUser);
 
   pool.connect(function(err, client, done) {
     if(err) {
-      console.log("Error connecting: ", err);
+      // console.log("Error connecting: ", err);
       res.sendStatus(500);
     }
     client.query("INSERT INTO users (username, password) VALUES ($1, $2) RETURNING users.id",
@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
           client.end();
 
           if(err) {
-            console.log("Error inserting data: ", err);
+            // console.log("Error inserting data: ", err);
             res.sendStatus(500);
           } else {
             res.sendStatus(201);

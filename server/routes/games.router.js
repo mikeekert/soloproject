@@ -19,12 +19,12 @@ var hltblookup = function (game) {
 };
 
 router.post('/', function (req, res) {
-    console.log('post /user route');
+    // console.log('post /user route');
     // check if logged in
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
-                console.log(conErr);
+                // console.log(conErr);
                 res.sendStatus(500);
             } else {
                 const junctionID = [req.body.user, req.body.progress, req.body.completed, req.body.nowplaying, req.body.timetobeat, req.body.title, req.body.platform, req.body.releasedate, req.body.coverart];
@@ -33,7 +33,7 @@ router.post('/', function (req, res) {
                 client.query(junctionQuery, junctionID, function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
-                        console.log(queryErr);
+                        // console.log(queryErr);
                         res.sendStatus(500);
                     } else {
                         res.send(resultObj.rows);
@@ -44,20 +44,20 @@ router.post('/', function (req, res) {
         // send back user object from database
     } else {
         // failure best handled on the server. do redirect here.
-        console.log('not logged in');
+        // console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
         res.send(false);
     }
 });
 
 router.post('/hours/:id', function (req, res) {
-    console.log('get /user/hours route, name: ', req.params);
+    // console.log('get /user/hours route, name: ', req.params);
     name = req.params.id;
     // check if logged in
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
-                console.log(conErr);
+                // console.log(conErr);
                 res.sendStatus(500);
             } else {
                 hltblookup(name).then(function (resp) {
@@ -68,19 +68,19 @@ router.post('/hours/:id', function (req, res) {
         // send back user object from database
     } else {
         // failure best handled on the server. do redirect here.
-        console.log('not logged in');
+        // console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
         res.send(false);
     }
 });
 
 router.get('/', function (req, res) {
-    console.log('get /user route');
+    // console.log('get /user route');
     // check if logged in
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
-                console.log(conErr);
+                // console.log(conErr);
                 res.sendStatus(500);
             } else {
                 const dbId = req.user.username;
@@ -88,7 +88,7 @@ router.get('/', function (req, res) {
                 client.query(queryGet, [dbId], function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
-                        console.log(queryErr);
+                        // console.log(queryErr);
                         res.sendStatus(500);
                     } else {
                         res.send(resultObj.rows);
@@ -98,7 +98,7 @@ router.get('/', function (req, res) {
         });
     } else {
         // failure best handled on the server. do redirect here.
-        console.log('not logged in');
+        // console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
         res.send(false);
     }
@@ -116,9 +116,9 @@ router.post('/api/:id', function (req, res) {
         }).then(response => {
             j = response.body.length;
             while (j--) {
-                console.log('#' + j, ': ', response.body[j].name);
+                // console.log('#' + j, ': ', response.body[j].name);
                 if (response.body[j].hasOwnProperty('cover') === false) {
-                    console.log('removing game, no image:', response.body[j].name);
+                    // console.log('removing game, no image:', response.body[j].name);
                     response.body.splice(j, 1);
                 } else if (response.body[j].name.includes('Collector')) {
                     response.body.splice(j, 1);
@@ -137,27 +137,27 @@ router.post('/api/:id', function (req, res) {
             var newArray = response.body;
 
             for (var i = 0; i < newArray.length; i++) {
-                console.log('id here: ', newArray[i].platforms);
+                // console.log('id here: ', newArray[i].platforms);
                 if (newArray[i].platforms == undefined) {
-                    console.log('undefined: ', newArray[i].name);
+                    // console.log('undefined: ', newArray[i].name);
                 } else {
                     newArray[i].system = _.findWhere(datatable, {
                         id: newArray[i].platforms[0]
                     });
                 }
-                console.log('name here: ', newArray[i].system);
+                // console.log('name here: ', newArray[i].system);
             }
             
             res.send(newArray);
         }).catch(error => {
-            console.log('error here:', error);
+            // console.log('error here:', error);
             res.send(false);
             // throw error;
         });
         // send back user object from database
     } else {
         // failure best handled on the server. do redirect here.
-        console.log('not logged in');
+        // console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
         res.sendStatus(403);
     }
@@ -167,16 +167,16 @@ router.put('/', function (req, res) {
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
-                console.log(conErr);
+                // console.log(conErr);
                 res.sendStatus(500);
             } else {
-                console.log('POST data', req.body);
+                // console.log('POST data', req.body);
                 const dbId = [req.body.progress, req.body.completed, req.body.timetobeat, req.body.platform, req.body.nowplaying, req.body.user];
                 const queryGet = "UPDATE user_game SET progress=$1, completed=$2, timetobeat=$3, platform=$4, nowplaying=$5 WHERE usergame_id = $6 ";
                 client.query(queryGet, dbId, function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
-                        console.log(queryErr);
+                        // console.log(queryErr);
                         res.sendStatus(500);
                     } else {
                         res.send(resultObj.rows);
@@ -186,7 +186,7 @@ router.put('/', function (req, res) {
         });
     } else {
         // failure best handled on the server. do redirect here.
-        console.log('not logged in');
+        // console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
         res.send(false);
     }
@@ -196,16 +196,16 @@ router.delete('/:id', function (req, res) {
     if (req.isAuthenticated()) {
         pool.connect(function (conErr, client, done) {
             if (conErr) {
-                console.log(conErr);
+                // console.log(conErr);
                 res.sendStatus(500);
             } else {
-                console.log('DELETE data', req.params.id);
+                // console.log('DELETE data', req.params.id);
                 const dbId = [req.params.id];
                 const queryGet = "DELETE FROM user_game WHERE usergame_id = $1";
                 client.query(queryGet, dbId, function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
-                        console.log(queryErr);
+                        // console.log(queryErr);
                         res.sendStatus(500);
                     } else {
                         res.send(resultObj.rows);
@@ -215,7 +215,7 @@ router.delete('/:id', function (req, res) {
         });
     } else {
         // failure best handled on the server. do redirect here.
-        console.log('not logged in');
+        // console.log('not logged in');
         // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
         res.send(false);
     }
