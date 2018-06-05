@@ -1,18 +1,11 @@
 <div ng-include="'views/partials/nav.html'" ng-controller="UserController as uc"></div>
 <div class="container" ng-init="ac.clamp()">
   <div class="centerThis">
-    <!-- <section class="section_8bit addFormTitle">
-      <div class="wrapper wrapMenu nowPlaying">
-        <p class="nowPlaying">
-          Add Game:
-        </p>
-      </div>
-    </section> -->
   </div>
   <div class="centerThis form">
     <section class="section_8bit addForm">
       <div class="wrapper wrapMenu nowPlaying">
-          <form class="nowPlaying">
+        <form class="nowPlaying">
           <span class="searchLabel">SEARCH:</span>
           <input type="text" class="search" ng-model="ac.searchIn">
           <button class="end arrowLink" ng-click="ac.userService.apiSearch(ac.searchIn)">ENTER</button>
@@ -42,8 +35,8 @@
 </div>
 
 <div class="loading" ng-if="ac.userObject.loading">
-    <span>Loading</span>
-    <span class="blinking-cursor loading">...</span>
+  <span>Loading</span>
+  <span class="blinking-cursor loading">...</span>
 </div>
 
 <div class="addForm" ng-repeat="i in ac.userObject.selectedGame">
@@ -77,11 +70,11 @@
         </span>
         <span class="gameDesc nowPlaying">
           <span class="searchLabelInner" id="customCheckbox">
-              <span class="searchLabel Left">NOW PLAYING:</Span>
-              <input type="checkbox" class="checkNowPlay" ng-model="i.nowplaying" id="nowplay">
-              <label class="searchLabel Left" for="nowplay"></label>
+            <span class="searchLabel Left">NOW PLAYING:</Span>
+            <input type="checkbox" class="checkNowPlay" ng-model="i.nowplaying" id="nowplay">
+            <label class="searchLabel Left" for="nowplay"></label>
           </span>
-      </span>
+        </span>
         </span>
         <span class="searchLabel">
           <button class="end arrowLink" ng-click="ac.userService.sendGame(i)">ENTER</button>

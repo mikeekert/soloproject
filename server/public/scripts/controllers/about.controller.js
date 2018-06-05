@@ -1,6 +1,6 @@
 myApp
     .controller('AboutController', function ($http, $location, UserService, $scope) {
-        var vm = this;
+        const vm = this;
         vm.userService = UserService;
         vm.userObject = UserService.userObject;
         vm.sequence = [];
@@ -22,7 +22,7 @@ myApp
                 },
                 done: function () {
                     vm.playAudio = function () {
-                        var audio = new Audio('assets/secret.mp3');
+                        const audio = new Audio('assets/secret.mp3');
                         audio.play();
                     };
                     vm.playAudio();
@@ -37,7 +37,7 @@ myApp
                             $scope.$apply();
                             setTimeout(function () {
                                 vm.playAudio = function () {
-                                    var audio = new Audio('assets/game-over.mp3');
+                                    const audio = new Audio('assets/game-over.mp3');
                                     audio.play();
                                 };
                                 vm.playAudio();

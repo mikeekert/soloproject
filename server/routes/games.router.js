@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var pool = require('../modules/pool.js');
-var datatable = require('../modules/datatable');
-var _ = require('underscore');
+const express = require('express');
+const router = express.Router();
+const pool = require('../modules/pool.js');
+const datatable = require('../modules/datatable');
+const _ = require('underscore');
 let hltb = require('howlongtobeat');
 let hltbService = new hltb.HowLongToBeatService();
 
@@ -12,9 +12,8 @@ require('dotenv').config();
 global['3scaleKey'] = process.env.IGDB_API;
 const client = igdb();
 
-var hltbpromise = '';
-
-var hltblookup = function (game) {
+const hltbpromise = '';
+const hltblookup = function (game) {
     return hltbService.search(game);
 };
 
@@ -52,10 +51,10 @@ router.post('/', function (req, res) {
 
 router.post('/hours/:id', function (req, res) {
     // console.log('get /user/hours route, name: ', req.params);
-    name = req.params.id;
+    let name = req.params.id;
     // check if logged in
     if (req.isAuthenticated()) {
-        pool.connect(function (conErr, client, done) {
+        pool.connect(function (conErr) {
             if (conErr) {
                 // console.log(conErr);
                 res.sendStatus(500);
@@ -131,14 +130,14 @@ router.post('/api/:id', function (req, res) {
                 }
             }
             response.body.splice(5, response.body.length);
-            if (response.body.length == 0) {
+            if (response.body.length === 0) {
                 res.send(false);
             }
-            var newArray = response.body;
+            const newArray = response.body;
 
-            for (var i = 0; i < newArray.length; i++) {
+            for (let i = 0; i < newArray.length; i++) {
                 // console.log('id here: ', newArray[i].platforms);
-                if (newArray[i].platforms == undefined) {
+                if (newArray[i].platforms === undefined) {
                     // console.log('undefined: ', newArray[i].name);
                 } else {
                     newArray[i].system = _.findWhere(datatable, {
@@ -147,9 +146,9 @@ router.post('/api/:id', function (req, res) {
                 }
                 // console.log('name here: ', newArray[i].system);
             }
-            
+
             res.send(newArray);
-        }).catch(error => {
+        }).catch(() => {
             // console.log('error here:', error);
             res.send(false);
             // throw error;

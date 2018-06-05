@@ -1,5 +1,5 @@
 myApp.controller('LoginController', function($http, $location, UserService) {
-    var vm = this;
+    const vm = this;
 
     vm.userService = UserService;
     vm.userObject = UserService.userObject;
@@ -15,8 +15,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     vm.alpha.push('del');
 
     vm.userService.letter = function(letter){
-      if (vm.user.username.length < 10 || letter == 'del') {
-        if (letter == 'del') {
+      if (vm.user.username.length < 10 || letter === 'del') {
+        if (letter === 'del') {
           vm.user.username = vm.user.username.slice(0, -1);
           return;
         }
@@ -37,7 +37,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
           } else {
             
           }
-        }).catch(function(response){
+        }).catch(function(){
           vm.message = "Wrong username or password";
         });
       }
@@ -48,10 +48,10 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         vm.message = "Choose a username and password!";
       } else {
         // // console.log('LoginController -- registerUser -- sending to server...', vm.user);
-        $http.post('/register', vm.user).then(function(response) {
+        $http.post('/register', vm.user).then(function() {
           // // console.log('LoginController -- registerUser -- success');
           $location.path('/home');
-        }).catch(function(response) {
+        }).catch(function() {
           // // console.log('LoginController -- registerUser -- error');
           vm.message = "Please try again.";
         });

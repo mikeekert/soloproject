@@ -1,16 +1,16 @@
 myApp
-  .controller('UserController', function (UserService) {
-    var vm = this;
-    vm.userService = UserService;
-    vm.userObject = UserService.userObject;
-    vm.Math = window.Math;
+    .controller('UserController', function (UserService) {
+        const vm = this;
+        vm.userService = UserService;
+        vm.userObject = UserService.userObject;
+        vm.Math = window.Math;
 
-    vm
-      .userService
-      .getgames();
+        vm
+            .userService
+            .getgames();
 
-    vm.inProgress = function (filter) {
-      return filter.nowplaying === false || filter.completed === false;
-    };
+        vm.inProgress = function (filter) {
+            return filter.nowplaying === false || filter.completed === false;
+        };
 
-  });
+    });
